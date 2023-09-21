@@ -1,0 +1,215 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1
+    style='text-align: left; font-size: 2em; font-weight: 700; font-family: "Noto Serif vedabaseio", "Noto Serif", serif; '>
+    Create a New Song/Stotram/Bajans</h1>
+<h2 style='text-align: left; font-size: 1.5em;'> Song Index(Meta Data)</h2>
+<p> In order to create New Entry of Song we need following meta data to create a <b>index of songs</b> <br><br>
+    <b> Name (short form & long form)</b> <br>
+    If <b>division</b> is present if yes then <b>no of divisions</b> eg: sb/canto=3/chapter=10/sloka=15 <br>
+    If sloka is present (<b>sloka statues</b>) if present then <b>total no.of Slokas</b> <br>
+    <b>groups</b> or tags: to group simillar songs : like for money, for protection, for fame, for sucess, for
+    education, same author, <br>
+    <b>devtion-god</b> : The song is dedivated to God like (Krishna, Gopi,Tulasi , Vishnu and Vishun-Avatar ,Narasimham,
+    Laxmi, Shiva, Durga, saraswati, Hanuman, Ganesha) <br>
+    <b>Song description</b> : who, when, where, what, how and why <br>
+    <b>Author Name</b> : To Group Song by author <br>
+    <b>Other Links</b> : mp3 format of bhajan/storam with different Tunes, Video with subtitle.
+</p>
+
+
+<div class="content-section" style="background: #fff;">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Song Meta Data</legend>
+            <div class="form-group">
+                {{ form.song_name.label(class="form-control-label") }}
+                {% if form.song_name.errors %}
+                {{ form.song_name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.song_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.song_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.song_short_name.label(class="form-control-label") }}
+                {% if form.song_short_name.errors %}
+                {{ form.song_short_name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.song_short_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.song_short_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.division.label(class="form-control-label") }}
+                {% if form.division.errors %}
+                {{ form.division(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.division.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.division(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.division_no.label(class="form-control-label") }}
+                {% if form.division_no.errors %}
+                {{ form.division_no(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.division_no.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.division_no(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.sloka_statues.label(class="form-control-label") }}
+                {% if form.sloka_statues.errors %}
+                {{ form.sloka_statues(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.sloka_statues.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.sloka_statues(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.total_slokas.label(class="form-control-label") }}
+                {% if form.total_slokas.errors %}
+                {{ form.total_slokas(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.total_slokas.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.total_slokas(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.group.label(class="form-control-label") }}
+                {% if form.group.errors %}
+                {{ form.group(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.group.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.group(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.devotion_god.label(class="form-control-label") }}
+                {% if form.devotion_god.errors %}
+                {{ form.devotion_god(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.devotion_god.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.devotion_god(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.author.label(class="form-control-label") }}
+                {% if form.author.errors %}
+                {{ form.author(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.author.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.author(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.describtion.label(class="form-control-label") }}
+                {% if form.describtion.errors %}
+                {{ form.describtion(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.describtion.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.describtion(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.other_links.label(class="form-control-label") }}
+                {% if form.other_links.errors %}
+                {{ form.other_links(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.other_links.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.other_links(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+
+<h2 style='text-align: left; font-size: 1.5em;'> Song Details</h2>
+<!-- <b> For each Sloka :</b> <br> -->
+<!-- <b>Sloka No</b> : <br>  -->
+<b>Sloka in hindi</b> : <br>
+<b>Slocka in english</b> (iskcon: font)<br>
+<b>Synonyms</b><br>
+<b>Translation</b> <br>
+<b>purpot</b> <br>
+
+<h1
+    style='text-align: left; font-size: 2em; font-weight: 700; font-family: "Noto Serif vedabaseio", "Noto Serif", serif; '>
+    Update the Old Song/Stotram/Bajan</h1>
+From current database we need to <b>select the song</b> we need to update.<br>
+We need to <b>get/update</b> metabase from (Stock Index) <br>
+We need to <b>get/update the each sloka</b> either in <b>loop/whole</b>.<br>
+
+
+
+
+<h1
+    style='text-align: left; font-size: 2em; font-weight: 700; font-family: "Noto Serif vedabaseio", "Noto Serif", serif; '>
+    Delete the Old Song/Stotram/Bajan</h1>
+From current database we need to <b>select the song</b> we need to Delete.<br>
+We need to delete the <b> Song in Song_Details with song_index(id)</b>
+We need to delte the <b> Song Index (id) for Song Table</b>
+{% endblock content %}
