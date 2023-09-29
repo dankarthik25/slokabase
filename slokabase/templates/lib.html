@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+
+<div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-bottom: 15px;">
+   <a class="song-path" href="{{ url_for('home') }}"> Home</a> 
+   </div>
+<div>  
+
+<h1 style="margin-bottom: 5px;">   List of Song in Library </h1>
+{% for song_meta in song_list%}
+<!-- {{song_meta['song_idx']}} <a href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> ({{song_meta['song_short_name']}}) <br>   -->
+ <!-- {{song_meta}} <br> -->
+
+ <div class="song-header" >
+    <a class="song-header-anchor" href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> <br>  
+ </div>
+ {% endfor %}
+</div>
+
+</div>
+
+{% endblock content %}

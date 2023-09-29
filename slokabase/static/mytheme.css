@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #f7d393;
+  /* black; */
+  color: black;
+}
+
+body {
+  background-color: white;
+  /* color: black; */
+}
+
+nav {
+  /* padding: 2em 0; */
+  padding: 1px;
+  flex-direction: row;
+  /* display: flex;
+justify-content: flex-end; */
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+/* li {
+
+} */
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  ;
+  /* color: white; */
+  color: #000;
+  margin: 2px 5px;
+  /* font-weight: bolder; */
+}
+
+/* a:hover, */
+li:hover,
+.nav-link:hover {
+  /* color: darkgray;  */
+  color: white;
+  background-color: #f3ba59;
+  /* darkgray; */
+}
+
+.content {
+  padding: 15px;
+}
+
+.song-path-container {
+  color: #1564a8;
+  background-color: #f5f5f5;
+  padding: 1px;
+}
+
+.song-path {
+  background-color: #f5f5f5;
+  color: #428bca;
+  padding: 1px;
+  text-decoration: none;
+  /* background-color: transparent; */
+}
+
+.song-path:hover {
+  text-decoration: underline;
+  color: #1564a8;
+  background-color: #f5f5f5;
+
+}
+
+.sloka-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  font-family: "Noto Serif vedabaseio", "Noto Serif", serif;
+  padding: 10px 0px
+}
+
+.sloka-verser-eng {
+  text-align: center;
+  font-family: "Noto Sans Devanagari", "Sanskrit 2003";
+  /* font-family: "cursive"; */
+  /* "Lohit Devanagari"; */
+  font-size: 1.5rem;
+  /* font-weight: 700; */
+  padding: 10px;
+}
+
+.sloka-header {
+  text-align: center;
+  font-family: "Noto Serif vedabaseio", "Noto Serif", serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: rgb(0, 128, 0);
+  padding: 10px 0px
+}
+.synonym-text{
+  font-size: 1.25rem;
+}
+.sloka-synonyms-key {
+  color: #BC2E07;
+  text-decoration: none;
+  background-color: transparent;
+
+}
+
+.sloka-synonyms-key:hover {
+  color: #6b1b04;
+  text-decoration: underline
+}
+
+.translation-text{
+  font-size: 1.25rem;
+  font-family: system-ui;
+}
+.song-header {
+  padding: 2px;
+  font-size: 1.5rem;
+  color: #6b1b04;
+  background-color: #f3e0c0;
+  border: 2px solid white;
+}
+
+.song-header-anchor {
+  text-decoration: none;
+  color: #6b1b04;
+  background-color: #f3e0c0;
+}
+
+.song-header-anchor:hover,
+.song-header:hover {
+  background-color: #6b1b04;
+  ;
+  color: #f4d7a2;
+}
+
+.song-header-anchor:hover {
+  background-color: #6b1b04;
+  color: #f4d7a2;
+  text-decoration: underline;
+}

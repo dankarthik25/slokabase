@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+    <!-- {{sloka_id}} -->
+    <div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px;">
+        <a class="song-path" href="{{ url_for('home') }}"> Home</a> / SongName:
+        <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}"> {{my_sloka_meta[0]['song_name']}}</a> /
+        Versa No:
+        <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}/{{my_sloka_meta[0]['slokas_no']}}">
+            {{my_sloka_meta[0]['slokas_no']}}</a>
+    </div>
+
+
+    <div style="padding-top: 30px;">
+        <h1 class="sloka-title"> {{my_sloka_meta[0]['song_name']}} | {{my_sloka_meta[0]['slokas_no']}} |</h1>
+        <p class="sloka-verser-eng">
+            <i>
+                {% for eng_line in my_sloka_meta[0]['sloka_eng'] %}
+                    {{eng_line}}<br>
+                {% endfor %}
+            </i>
+        </p>
+    </div>
+
+    <!-- <div style="text-align: center;">
+        <h1 class="sloka-header">Synonyms</h1>
+        {% if my_sloka_meta[0]['synonyms'] is not none %}
+            {% for temp_dic in my_sloka_meta[0]['synonyms'] %}
+                {% for key, value in temp_dic.items() %}
+                    <a class="sloka-synonyms-key" href=''> {{key}}</a>:{{value}} ;
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div> -->
+
+<!-- Test Synonyms sync with verse     -->
+
+{% if linewise_synonym is not none %}
+    <div style="text-align: center;">
+        <h1 class="sloka-header">Synonyms</h1>
+        <p class="synonym-text">
+                {% for line in linewise_synonym %}
+                <!-- {{line}} -->
+                    {% for synonym_dic in line %}
+                    <!-- {{synonym_dic}} -->
+                        {% for key, value in synonym_dic.items() %}
+                            <a class="sloka-synonyms-key" href=''> {{key}}</a>:{{value}} ;
+                        {% endfor %}
+                    {% endfor %}<br>
+                {% endfor %}
+        </p>
+    </div>
+{% endif %}
+
+    <div style="text-align: center;">
+        <h1 class="sloka-header">Translation</h2>
+            <p class="translation-text">
+                {% for trans_line in my_sloka_meta[0]['translation'] %}
+                    {{trans_line}} <br>
+                {% endfor %}
+            </p>
+    </div>
+    {% endblock content %}
