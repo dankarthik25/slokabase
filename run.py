@@ -1,8 +1,9 @@
 
 import os, sqlite3 
+import re
 from slokabase import app
 
-from flask import render_template, url_for, flash, redirect
+from flask import request,render_template, url_for, flash, redirect
 from slokabase.forms import RegistrationForm, LoginForm, SongIndex, Song_Details
 
 
@@ -22,6 +23,123 @@ db_path = os.path.join(os.getcwd(),db_name)
 # song_list = SongIndex_sql.read_entry(*['song_idx', 'song_name','song_short_name'])
 # mysongmy = mySongs_sql.read_entry( *['song_idx', 'slokas_no', 'sloka_eng' ,'translation'], song_idx=4) 
 
+def get_single_dic(db_name,dic_word):
+    db_name = 'dictionary.db'
+    # dic_word = 'tomāra'
+    # dic_word = 'kṛṣṇa'
+    db_path = os.path.join(os.getcwd(),db_name)
+
+    db_connect = sqlite3.connect(db_path)
+    db_cursor = db_connect.cursor()
+    query = f"""select word, meaning_value,reference from DictMeaning  where word='{dic_word.strip()}' ORDER BY word, meaning_value ASC;"""
+    db_cursor.execute(query)
+    data = db_cursor.fetchall()
+    db_cursor.close()
+    return data
+
+# def add_reference2single_dict(db_name,data):
+#     db_path = os.path.join(os.getcwd(),db_name)
+#     SongIndex_sql = SqliteModel(db_path,'SongIndex')
+
+#     new_data = []
+#     # print()
+#     # print('data inside fun add_ref2single_dict: ',data)
+#     for tuple_data in data:
+#         temp_line = list(tuple_data)
+#         # print('temp_line :', temp_line)
+#         ref_list = []
+#         for ref in temp_line[2].split(','):
+#             # print()
+#             ref_dic = dict()   
+#             # print(ref)
+#             temp_short_name = ref.split('/')[0]
+#             my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
+#             ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
+#             ref_list.append(ref_dic)
+#         temp_line[2] = ref_list
+#         new_data.append(temp_line)
+#     return new_data
+
+# def add_reference2single_dict(db_name,data):
+#     db_path = os.path.join(os.getcwd(),db_name)
+#     SongIndex_sql = SqliteModel(db_path,'SongIndex')
+#     dict_word = data[0][0]
+    
+#     new_data = []
+#     new_data.append(dict_word)
+#     # print('data inside fun add_ref2single_dict: ',data)
+#     for tuple_data in data:
+#         temp_line = list(tuple_data)
+#         del temp_line[0]
+#         # print()
+#         # print('Befor temp_line: ',temp_line)
+#         # print('temp_line :', temp_line)
+#         ref_list = []
+#         for ref in temp_line[1].split(','):
+#             ref_dic = dict()   
+#             # print(ref)
+#             temp_short_name = ref.split('/')[0]
+#             my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
+#             ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
+#             ref_list.append(ref_dic)
+#         temp_line[1] = ref_list
+#         # print('After temp_line : ',temp_line)
+#         # print()
+#         new_data.append(temp_line)
+#     return new_data
+
+def add_reference2single_dict(db_name,data):
+    db_path = os.path.join(os.getcwd(),db_name)
+    SongIndex_sql = SqliteModel(db_path,'SongIndex')
+    dict_word = data[0][0]
+    
+    new_data = []
+    # new_data.append(dict_word)
+    # print('data inside fun add_ref2single_dict: ',data)
+    for tuple_data in data:
+        temp_line = list(tuple_data)
+        del temp_line[0]
+        # print()
+        # print('Befor temp_line: ',temp_line)
+        # print('temp_line :', temp_line)
+        ref_list = []
+        for ref in temp_line[1].split(','):
+            ref_dic = dict()   
+            # print(ref)
+            temp_short_name = ref.split('/')[0]
+            my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
+            ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
+            ref_list.append(ref_dic)
+        temp_line[1] = ref_list
+        # print('After temp_line : ',temp_line)
+        # print()
+        new_data.append(temp_line)
+        data = [dict_word,new_data]
+    # new_data.insert(0,dict_word)
+    return data
+# add_reference2single_dict('slokabase.db',data)
+
+def get_all_dict_words(db_name):
+    db_path = os.path.join(os.getcwd(),db_name)
+    db_connect = sqlite3.connect(db_path)
+    db_cursor = db_connect.cursor()
+    # query = f"""select word, meaning_value,reference from DictMeaning  where word='{dic_word}' ORDER BY word, meaning_value ASC;"""
+    # query = f"""select word from DictMeaning  ORDER BY word COLLATE NOCASE, meaning_value ASC;"""
+    query = f"""select word from DictWord  ORDER BY word COLLATE NOCASE ASC;"""    
+    db_cursor.execute(query)
+    data = db_cursor.fetchall()
+    db_cursor.close()
+    # print(data)
+    order_list = []
+    for i in data:
+        # print()
+        if i[0][0] not in order_list:
+            # print('append')
+            # order_list.append(i[0][0])
+            order_list.append(i[0])
+    # print(order_list)
+    return order_list
+
 
 
 @app.route("/")
@@ -34,6 +152,58 @@ def home():
     return render_template('lib.html', song_list=song_list)
 
     # return render_template('sloka.html', posts=posts,)
+
+
+
+@app.route("/dictionary")
+def dictionary():
+    all_dict_word =get_all_dict_words('dictionary.db')
+    all_dict_data = []
+    for dic_word in all_dict_word:
+        # dic_word = 'tomāra'
+        data = get_single_dic('dictionary.db',dic_word)
+        # print(data)
+        if len(data)==0:
+            print('error', dic_word, data)
+            print(f'dic word :{dic_word} has no meaning defined in dictMeaning Table')
+        else: 
+            data = add_reference2single_dict('slokabase.db',data)
+            all_dict_data.append(data)
+    # return render_template('test.html',data=data)
+    # print(all_dict_data)
+    return render_template('test.html',all_dict_data=all_dict_data)
+
+@app.route("/search")
+def search():
+    q = request.args.get("q")
+    all_dict_word =get_all_dict_words('dictionary.db')
+    all_dict_data = []    
+    print(q)
+    r = re.compile(q)
+    match_words = list(filter(r.match, all_dict_word)) # Read Note below
+    for match_word in match_words:
+        data = get_single_dic('dictionary.db',match_word)
+        # print(data)
+        if len(data)==0:
+            print('error', match_word, data)
+            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
+        else: 
+            data = add_reference2single_dict('slokabase.db',data)
+            all_dict_data.append(data)
+    return render_template('search.html',all_dict_data=all_dict_data)
+    print(newlist)
+
+# Exact, Exact Word, Contains Words, Word Starts with
+# regular exp : krsna  to kṛṣṇa or a for 
+# a,ā,ai
+# i, ī,ai
+# u,ū
+# r̥,r̥̄,r
+# l̥, l̥̄,l
+# o,ō,au
+# ṅa, ña,ṇa, na
+# śa,ṣa,sa
+# ka,kha generally ignored
 
 @app.route("/lib")
 def lib():

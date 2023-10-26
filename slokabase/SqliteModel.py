@@ -193,7 +193,7 @@ class SqliteModel():
     def update_entry(self,*args, **kwargs):
         query = get_update_query(self.table_name,*args,**kwargs)
         self.db_cursor = self.db_connect.cursor()
-        # print(query)
+        #print(query)
         try :
             self.db_cursor.execute(query)        
             self.db_connect.commit()

@@ -5,11 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="../static/test.css">
-
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
 </head>
-<h1> Hello</h1>
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla odio itaque, esse modi corrupti molestias reiciendis nesciunt? Sint repudiandae nam aperiam ratione delectus eius dolores, natus odit vitae ullam maxime.
 <body>
-    
+    <input type="text" class="input" placeholder="Search" name="q" 
+            hx-get="/search" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+    <!-- asfadfadf -->
+<table >
+
+    <tbody id="results">
+
+    </tbody>
+    </table>    
+<!-- <table>
+{% for data in all_dict_data %}
+    <tr>
+        <td><b>{{data[0]}}</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    {% for all_dic_meaning in data[1] %}
+    <tr> <td></td> 
+        <td>{{all_dic_meaning[0]}},</td> 
+        <td>
+            {% for each_ref in all_dic_meaning[1] %} 
+                {% for key, value in each_ref.items()%}
+                    <a class="sloka-synonyms-key" href="{{ url_for('lib')}}/{{key}}">{{value}} </a>  &nbsp;
+                {% endfor %}                    
+            {% endfor %}
+        </td>        
+    {% endfor %}              
+{% endfor %}          
+</table>     -->
 </body>
 </html>

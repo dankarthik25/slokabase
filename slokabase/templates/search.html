@@ -1,0 +1,25 @@
+<table>
+{% for data in all_dict_data %}
+    <div >
+    <tr >
+
+        <td style="border-top: 2px solid black;"><b>{{data[0]}}</b></td>
+    </tr>
+    </div>
+    {% for all_dic_meaning in data[1] %}
+    <tr> <td></td> 
+        <td>{{all_dic_meaning[0]}},</td> 
+        <td>
+            {% for each_ref in all_dic_meaning[1] %} 
+                {% for key, value in each_ref.items()%}
+                    <a class="sloka-synonyms-key" href="{{ url_for('lib')}}/{{key}}">{{value}} </a>  &nbsp;
+                {% endfor %}                    
+            {% endfor %}
+        </td>   
+             
+    </tr> 
+
+    {% endfor %}              
+
+{% endfor %}          
+</table>    
