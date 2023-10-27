@@ -40,7 +40,7 @@ jaya=hail, victory;Mahishasura= Demon Mahishasura;mardini= Destroyer;ramya=pleas
 
 sura-lalanā=Deva-Celestial Dancer; tatathēyi=Dance Rhythm; tathēyi=Dance Rhythm; kr̥ta=Performed; abhinaya=Dramatically expressing sentiment; udara=like inside; nr̥tyaratē=Engaged in Dancing Intently;
 kr̥ta=Performed; kukuthaḥ=Tala [music beat]; kukutho=Tala [music beat]; gaḍadādika=Tala [music beat]; tāla=Tala [music beat];  kutūhala=Curiosity,Eagerness; gānaratē=Delightly Engaged in Singing Music; 
-dhudhukuṭa=Tala [music beat]; dhukkuṭa=Tala [music beat]; dhiṁdhimita==Tala [music beat]; dhvani=Sound; dhīra=sober,patient learned gentle scholar; mr̥daṁga= Musical Instrument; nināda=Sound; ninādaratē=[Mridanga] Engaged(Creating) the Sound;
+dhu-dhu-kuṭa=Tala [music beat]; dhuk-kuṭa=Tala [music beat]; dhiṁ-dhim-ita=Tala [music beat]; dhvani=Sound; dhīra=sober,patient learned gentle scholar; mr̥daṁga= Musical Instrument; nināda=Sound; ninādaratē=[Mridanga] Engaged(Creating) the Sound;
 jaya=hail, victory;Mahishasura= Demon Mahishasura;mardini= Destroyer;ramya=pleasant;kapardin = hair intertwind , twisted hair,Locks of Hair;śaila= mountain or hill;sutē=daughter,child;
 
 jaya=victory; jaya=victory; japya=japa,constantly praying; jayē-jaya-śabda=Victory Shouts aftr Victory; para-stuti=Praised by Other's; tat=that; para=Follwingly,Succeding; viśva-nutē=Universe-Praised,Who is praised by Whole Universe;
@@ -55,9 +55,9 @@ ayi=Hail;sumanaḥ-sumanaḥ-sumanaḥ=Oh my/yours Beautiful Mind; su-mano-hara=
 su-nayana-vi-bhramara=Beautiful-Eyes-prefix-Bee,Beautiful Eyes like Bees; bhramara-bhramara=Bee; bhramara-bhramarādhipatē=Conquerer of Bees[by Beautiful Eyes]
 jaya=hail, victory;Mahishasura= Demon Mahishasura;mardini= Destroyer;ramya=pleasant;kapardin = hair intertwind , twisted hair,Locks of Hair;śaila= mountain or hill;sutē=daughter,child;
 
-sahita=Borne,Endure,Supported,Accompanied with;mahāhava=Great War/Battle; sahita-mahāhava=Accompanied in this Great Battle; mallama-tallika=Wrestler-Excellent,Excellent Wrestlers; malli-tarallaka=Jasmine-glitter/moving to and fro; malla-ratē=Involved in Wrestling;
-viracita-vallika=Composed-Creeper,Composed of Creeper[like tender girls];pallika-mallika=Village-Jasmine,Jasmine of Village; jhillika-bhillika=buzzing Cricket[insect]-Wild Mountain Race Bheels[Tender girls],[Tender girls of]Bheels buzzing; varga=Group,Class,Community;vr̥tē=Surrounded by,Concealed,Enveloped; vargavr̥tē= Surrounded by Group[girls of Bheel];
-śita=Satisfied,Regaled;kr̥ta=Performed,Done,Made;phulla=Beaming,Smiling; śita-kr̥ta-phulla=Face plays a Smilling caused by Joy; samullasita=Shining Forth;aruṇa=Dawn,Colour of Morning,Reddish-Brown; samullasita-aruṇa=Dawn Breaking Forth; tallaja=An Excellent Specimen of;pallava=Sprout,Shoot, Twing,Bud,Blossom; tallajapallava=Blossoming Excellent Buds; sal=To Go,Move;lalitē=Playing,Sported,Played; sal-lalitē=Play;
+sahita-mahāhava=Accompanied-Great Battle,Accompanied in this Great Battle; mallama-tallika=Wrestler-Excellent,Excellent Wrestlers; malli-tarallaka=Jasmine-tender; malla-ratē=Involved in Wrestling;
+viracita-vallika=Composed-Creeper,Composed of Creeper[like tender girls];pallika-mallika=Village-Jasmine,Jasmine of Village; jhillika-bhillika=buzzing Cricket[insect]-Wild Mountain Race Bheels[Tender girls],[Tender girls of]Bheels buzzing; varga-vr̥tē=Group-Surrounded,Surrounded by Group[girls of Bheel];
+śita=Satisfied,Regaled;kr̥ta=Performed,Done,Made;phulla=Beaming,Smiling; śita-kr̥ta-phulla=Face plays a Smilling caused by Joy; samulla-sita=Shining Forth;aruṇa=Dawn,Colour of Morning,Reddish-Brown;  tallaja-pallava=Excellent-Bud,Blossoming Excellent Buds; sal-lalitē=to-Play;
 jaya=hail, victory;Mahishasura= Demon Mahishasura;mardini= Destroyer;ramya=pleasant;kapardin = hair intertwind , twisted hair,Locks of Hair;śaila= mountain or hill;sutē=daughter,child;
 
 avirala=Incessant;gaṇḍa=Cheek; aviralagaṇḍa=Incessantly[flowing from the] Cheeks; galan=Dropping,Flowing;gala=Oozing; mada==Intoxicant; mēdura=Thick; galan-mada-mēdura=Thick Intoxicants Oozing Out; matta-mataṅga=Drunk/Intoxicated-An Elephant; ja-rāja-patē=Last Letter of Matamgaja-Royal-Falling;
