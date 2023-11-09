@@ -452,7 +452,7 @@ def ppt(song_id):
 #     pass
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
     # app.run(debug=True)
 
