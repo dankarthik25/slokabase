@@ -4,26 +4,43 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">  
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mytheme.css') }}">
+  <!-- HTMX script -->
+  <script src="https://unpkg.com/htmx.org@1.9.4"></script>   
   {% if title %}
-  <title>Flask Blog - {{ title }}</title>
+  <title>SanskritArchive - {{ title }}</title>
   {% else %}
-  <title>Flask Blog</title>
+  <title>SanskritArchive</title>
   {% endif %}
 </head>
 
 <body>
   <header>
       <div class="container">
-        <!-- <nav>
+        
+        <nav>
+
           <ul>
+            <!-- slokabase/static/underdevelopement.html -->
+            <!-- "{{ url_for('static', filename='underdevelopement.html') }}" -->
+            <li>  <img src="{{ url_for('static', filename='logo.png') }}" alt="Girl in a jacket" style="width:30px;"> </li>          
             <li><a href="{{url_for('home')}}" class="nav-link">Home</a></li>
-            <li><a href="" class="nav-link">Products</a></li>
-            <li><a href="" class="nav-link">Contact Us</a></li>
-            <li><a href="" class="nav-link">About Us</a></li>
+            <li><a href="{{url_for('dictionary')}}" class="nav-link">Dictionary</a></li>     
+            <li><a href="{{url_for('addNewSong')}}" class="nav-link">AddNewSong</a></li>                        
+            <li><a href="{{url_for('hindi2eng')}}" class="nav-link">hindi2english</a></li>                        
+            <li><a href="{{ url_for('static', filename='SankritTutorial.html') }}" class="nav-link">Sanskrit</a></li>
+            <!-- <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Learn Slokas</a></li> -->
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Books</a></li>
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Classical Music</a></li>
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">SahityaKala</a></li>
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Jyothishya</a></li>
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Vastukala </a></li>
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Blog </a></li>            
           </ul>
-        </nav> -->
+        </nav>
       </div>
   </header>
   <main role="main" class="container">

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<br>
+Search : <input type="text" class="input" 
+                placeholder=" Sanskrit Word for Dictionary Search" 
+                name="q" size="40" style='height:3em'
+                hx-get="/search" hx-trigger="keyup changed delay:500ms" 
+                hx-target="#results">
+    <!-- asfadfadf -->
+<table >
+
+    <tbody id="results">
+
+    </tbody>
+    </table>    
+<!-- <table>
+{% for data in all_dict_data %}
+    <tr>
+        <td><b>{{data[0]}}</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    {% for all_dic_meaning in data[1] %}
+    <tr> <td></td> 
+        <td>{{all_dic_meaning[0]}},</td> 
+        <td>
+            {% for each_ref in all_dic_meaning[1] %} 
+                {% for key, value in each_ref.items()%}
+                    <a class="sloka-synonyms-key" href="{{ url_for('lib')}}/{{key}}">{{value}} </a>  &nbsp;
+                {% endfor %}                    
+            {% endfor %}
+        </td>        
+    {% endfor %}              
+{% endfor %}          
+</table>     -->
+{% endblock content %}

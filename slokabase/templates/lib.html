@@ -3,9 +3,17 @@
 <div class="content">
 
 <div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-bottom: 15px;">
-   <a class="song-path" href="{{ url_for('home') }}"> Home</a> 
+   <img src="{{ url_for('static', filename='logo.png') }}" alt="SanskritArchive" style="width:90px;">   
+    <!-- <a class="song-path" href="{{ url_for('home') }}"> Home</a>  -->
    </div>
 <div>  
+
+<!-- Song Search : <input type="text" class="input" placeholder="Enter Song to  Search" name="ssearch" size="40" style='height:2em'
+            hx-get="/songsearch" hx-trigger="keyup changed delay:500ms" hx-target="#songresults">
+<div id="songresults">   
+</div> -->
+
+<br>
 
 <h1 style="margin-bottom: 5px;">   List of Song in Library </h1>
 {% for song_meta in song_list%}

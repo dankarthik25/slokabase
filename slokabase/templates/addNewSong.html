@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+<br>
+<h2>Enter Song Details</h2> 
+<!-- <form hx-post="/submitaddnewsong" hx-target="#new-book">
+    <input type="text" placeholder="Book Title" name="title" class="form-control mb-3" />
+    <input type="text" placeholder="Book Author" name="author" class="form-control mb-3" />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+
+<table style="width:50%"> 
+    <tr>
+        <th style="width:30%"></th>
+        <th style="width:70%"></th>
+        <!-- <th>Age</th> -->
+      </tr>    
+    <form hx-post="/submitaddnewsong"  hx-swap="beforeend" hx-target="#new-book" class="mb-3" > 
+        <tr> 
+            <td> Song Name </td> 
+            <td><input type="text" placeholder="Song Name" name="Song Name" size="40" required/></td> 
+        </tr> 
+         <tr> 
+            <td>Song Short Name  </td> 
+            <td><input type="text" placeholder="Short Name [Unique & NO space]" size="40" name="Short Name"  /></td> 
+        </tr> 
+            <tr> 
+            <td> Devotional God   </td> 
+            <td><input type="text" placeholder="Devotional God" size="40" name="Devotional God"   /></td> 
+        </tr> 
+        <tr> 
+        </tr> 
+            <tr> 
+            <td> Author </td> 
+            <td><input type="text" placeholder="Author" size="40" name="Author"/></td> 
+        </tr> 
+        <tr>
+            <td> Describtion </td> 
+            <td><textarea rows="4" cols="50" name = "Describtion"> </textarea>   </td>
+         </tr>
+
+        <tr> 
+            <td>Other Links</td> 
+            <td><textarea rows="4" cols="50" name="Other Links"> </textarea>   </td>            
+
+        </tr> 
+         <!-- <tr>
+            <td><label for="Song Hindi"> Song Devanagari</label> </td> 
+            <td><textarea rows="4" cols="50" name = "Song Hindi"> </textarea>   </td>
+         </tr> -->
+ 
+         <tr>
+            <td> Song IAST </td> 
+            <td><textarea rows="4" cols="50" name="Song IAST" required > </textarea>   </td>
+         </tr>
+         <tr>
+            <td>Song Synonyms </td> 
+            <td><textarea rows="4" cols="50" name="Song Synonyms"> </textarea>   </td>
+         </tr>
+         <tr>
+            <td><label for="Song Translation"> Song Translation</label> </td> 
+            <td><textarea rows="4" cols="50" name="Song Translation"> </textarea>   </td>
+         </tr>
+         <!-- <tr>
+            <td><label for="Song Purpot"> Song Purpot</label> </td> 
+            <td><textarea rows="4" cols="50" name="Song Purpot"> </textarea>   </td>
+         </tr>  -->
+         <tr>
+            <td> <button rows="4" cols="50" type="submit" >Submit New Song</button></td> 
+         </tr>
+
+
+    </form> 
+</table> 
+
+<div id="new-book"> 
+
+</div>
+
+
+
+{% endblock content %}
+
+<!-- <table> 
+    <form> 
+        <tr> 
+            <td> <label for="name">  Name </label> </td> 
+            <td><input type="text" id="name" />   </td> 
+        </tr> 
+        <tr> 
+            <td><label for="email"> Email </label> </td> 
+            <td><input type="email" id="email" />  </td> 
+        </tr> 
+        <tr> 
+            <td><label for="telnum"> Tel No. </label> </td> 
+            <td><input type="telnum" id="telnum" />   </td> 
+        </tr> 
+        <tr> 
+            <td><label for="Roll No."> Roll No. </label> </td> 
+            <td><input type="number" id="rollno" /> 
+            </td> 
+        </tr> 
+    </form> 
+</table>  -->

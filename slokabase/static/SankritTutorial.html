@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-10-30 Mon 12:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sankrit Tutorial</title>
+<meta name="author" content="Karthik" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="icon" type="image/png" href="https://deepalgorithms.in/assets/icons/favicon.png">
+<link rel="stylesheet" type="text/css" href="readtheorg-htmlize.css">
+<link rel="stylesheet" type="text/css" href="readtheorg.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+
+</head>
+<body>
+
+<div id="content" class="content">
+<h1 class="title">Sankrit Tutorial</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgea4d87a">Alphabets akṣara/vraṇa  [अक्षर/व्रण]:</a>
+<ul>
+<li><a href="#org1e07c6c"><b>svara</b> [स्वरा]</a></li>
+<li><a href="#org27b947a"><b>vyañjanā</b> [व्यञ्जना]</a></li>
+<li><a href="#org8c1e7dd">IAST</a></li>
+</ul>
+</li>
+<li><a href="#org4b14b8c">Preview</a></li>
+<li><a href="#orgc700a6f">Course Structure</a>
+<ul>
+<li><a href="#orgadb8c11">Course :1</a>
+<ul>
+<li><a href="#org451cbec">Level 1</a></li>
+<li><a href="#orgafc67cd">Level 2</a></li>
+<li><a href="#org995a8ae">Level 3:</a></li>
+</ul>
+</li>
+<li><a href="#org7c5872b">Course 2:</a>
+<ul>
+<li><a href="#orge28a45b">Level 4</a></li>
+<li><a href="#org8ff48d8">Level 5</a></li>
+</ul>
+</li>
+<li><a href="#org108b35f">Course 3:</a>
+<ul>
+<li><a href="#orge26f7e9">Level 7</a></li>
+<li><a href="#org0dfb954">Level 8</a></li>
+<li><a href="#orge9a49a8">Level 9</a></li>
+</ul>
+</li>
+<li><a href="#orge7e4517">Course 4 :</a>
+<ul>
+<li><a href="#orgcc6dfdb">Level 9</a></li>
+<li><a href="#orgb2ed900">Level 10:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgea4d87a" class="outline-2">
+<h2 id="orgea4d87a">Alphabets akṣara/vraṇa  [अक्षर/व्रण]:</h2>
+<div class="outline-text-2" id="text-orgea4d87a">
+<p>
+In Sanskrit,alphabets are know as <b>akṣara</b> अक्ष             <br />
+and  there are 14 Vowels <b>svara</b> [स्वरा] and 42 Consonants <b>vyañjanā</b> [व्यञ्जना] <br />
+Devanagri , is based on phonetic principles that consider both the manner and place of articulation of the consonants and vowels they represent. This arrangement is usually referred to as the varṇamālā ("garland of letters") <br />
+In Sanskrit,alphabets are Expalined here  <a href="https://vedantatoday.com/sanskrit-letters-aksharani/">https://vedantatoday.com/sanskrit-letters-aksharani/</a>
+</p>
+</div>
+
+<div id="outline-container-org1e07c6c" class="outline-3">
+<h3 id="org1e07c6c"><b>svara</b> [स्वरा]</h3>
+<div class="outline-text-3" id="text-org1e07c6c">
+
+<div id="orga8f7f98" class="figure">
+<p><img src="The-five-places-of-origin-of-the-Sanskrit-letters.png" alt="The-five-places-of-origin-of-the-Sanskrit-letters.png" />
+</p>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">devanagari</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">kaṇṭhya (Guttural)</td>
+<td class="org-left">अ [a]  आ[ā]</td>
+</tr>
+
+<tr>
+<td class="org-left">tālavya (Palatal)</td>
+<td class="org-left">इ[i]  ई[ī]</td>
+</tr>
+
+<tr>
+<td class="org-left">oṣṭhya (Labial)</td>
+<td class="org-left">उ[u] ऊ[ū]</td>
+</tr>
+
+<tr>
+<td class="org-left">mūrdhanya (Retroflex)</td>
+<td class="org-left">ऋ[ṛ] ॠ[ṝ]</td>
+</tr>
+
+<tr>
+<td class="org-left">dantya (Dental)</td>
+<td class="org-left">ऌ ॡ</td>
+</tr>
+
+<tr>
+<td class="org-left">kaṇṭhatālavya (Palatoguttural)</td>
+<td class="org-left">ए[e]  ऎ [ē]  ऐ[ai]</td>
+</tr>
+
+<tr>
+<td class="org-left">kaṇṭhoṣṭhya (Labioguttural)</td>
+<td class="org-left">ओ[o]  ऒ [ō] औ[au]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">अं [aṁ] अः [aḥ]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ॲ  ऍ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org27b947a" class="outline-3">
+<h3 id="org27b947a"><b>vyañjanā</b> [व्यञ्जना]</h3>
+<div class="outline-text-3" id="text-org27b947a">
+<p>
+source : <a href="https://en.wikipedia.org/wiki/Devanagari">https://en.wikipedia.org/wiki/Devanagari</a> Consonants
+<img src="Screenshots_2023-10-30T11-55-51.png" alt="Screenshots_2023-10-30T11-55-51.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org8c1e7dd" class="outline-3">
+<h3 id="org8c1e7dd">IAST</h3>
+<div class="outline-text-3" id="text-org8c1e7dd">
+<p>
+International Alphabet of Sanskrit Transliteration (IAST) is a transliteration scheme that allows the lossless romanisation of Indic scripts as employed by Sanskrit and related Indic languages. It is based on a scheme that emerged during the 19th century from suggestions by Charles Trevelyan, William Jones, Monier Monier-Williams and other scholars, and formalised by the Transliteration Committee of the Geneva Oriental Congress, in September 1894.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">अ a</td>
+<td class="org-left">आ ā</td>
+<td class="org-left">इ i</td>
+<td class="org-left">ई ī</td>
+<td class="org-left">उ u</td>
+<td class="org-left">ऊ ū</td>
+<td class="org-left">ऋ ṛ</td>
+<td class="org-left">ॠ ṝ</td>
+</tr>
+
+<tr>
+<td class="org-left">ऌ ḷ</td>
+<td class="org-left">ॡ ḹ</td>
+<td class="org-left">ए e</td>
+<td class="org-left">ऎ ē</td>
+<td class="org-left">ऐ ai</td>
+<td class="org-left">ओ o</td>
+<td class="org-left">ऒ ō</td>
+<td class="org-left">औ au</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">अं aṁ</td>
+<td class="org-left">अः aḥ</td>
+<td class="org-left">ॐ oṁ</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">क ka</td>
+<td class="org-left">ख kha</td>
+<td class="org-left">ग ga</td>
+<td class="org-left">घ gha</td>
+<td class="org-left">ङ ṅa</td>
+</tr>
+
+<tr>
+<td class="org-left">च ca</td>
+<td class="org-left">छ cha</td>
+<td class="org-left">ज ja</td>
+<td class="org-left">झ jha</td>
+<td class="org-left">ञ ña</td>
+</tr>
+
+<tr>
+<td class="org-left">ट ṭa</td>
+<td class="org-left">ठ ṭha</td>
+<td class="org-left">ड ḍa</td>
+<td class="org-left">ढ ḍha</td>
+<td class="org-left">ण ṇa</td>
+</tr>
+
+<tr>
+<td class="org-left">त ta</td>
+<td class="org-left">थ tha</td>
+<td class="org-left">द da</td>
+<td class="org-left">ध dha</td>
+<td class="org-left">न na</td>
+</tr>
+
+<tr>
+<td class="org-left">प pa</td>
+<td class="org-left">फ pha</td>
+<td class="org-left">ब ba</td>
+<td class="org-left">भ bha</td>
+<td class="org-left">म ma</td>
+</tr>
+
+<tr>
+<td class="org-left">य ya</td>
+<td class="org-left">र ra</td>
+<td class="org-left">ल la</td>
+<td class="org-left">व va</td>
+</tr>
+
+<tr>
+<td class="org-left">श śa</td>
+<td class="org-left">ष ṣa</td>
+<td class="org-left">स sa</td>
+<td class="org-left">ह ha</td>
+</tr>
+
+<tr>
+<td class="org-left">ळ ḻa</td>
+<td class="org-left">क्ष kṣa</td>
+<td class="org-left">ज्ञ jña</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<div id="org3bb607f" class="figure">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4b14b8c" class="outline-2">
+<h2 id="org4b14b8c">Preview</h2>
+<div class="outline-text-2" id="text-org4b14b8c">
+<p>
+Top Sankrit Literature
+</p>
+
+<ul class="org-ul">
+<li>Veda</li>
+<li>Upanishad</li>
+<li>Purana</li>
+<li>Itihasa</li>
+<li>Sutra</li>
+<li>Shastra</li>
+<li>Smrti</li>
+<li>Darshana</li>
+<li>Kavya</li>
+<li>Katha</li>
+<li>Bhagavat Gita</li>
+</ul>
+
+<p>
+Classification of Literation :
+</p>
+<ul class="org-ul">
+<li>Veda Upanishad Sutra:
+<ul class="org-ul">
+<li>Consit of 4Vedas Rig,Sama,&#x2026;etc, Updanishad, Sutra: Patanjali, Panini,Jothisya etc,,</li>
+<li>Generally it is teached under Experienced scholars in Resident Schools 10-15;</li>
+</ul></li>
+
+<li>Shastra Smrti Kavya
+<ul class="org-ul">
+<li>Learnt as Special Subject by Scholar in their Curriculums.</li>
+</ul></li>
+
+<li>Katha Shloka
+<ul class="org-ul">
+<li>After learnning Language Basics you can yourself comprehend</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc700a6f" class="outline-2">
+<h2 id="orgc700a6f">Course Structure</h2>
+<div class="outline-text-2" id="text-orgc700a6f">
+<p>
+Lesson Plan:
+</p>
+</div>
+<div id="outline-container-orgadb8c11" class="outline-3">
+<h3 id="orgadb8c11">Course :1</h3>
+<div class="outline-text-3" id="text-orgadb8c11">
+</div>
+<div id="outline-container-org451cbec" class="outline-4">
+<h4 id="org451cbec">Level 1</h4>
+<div class="outline-text-4" id="text-org451cbec">
+<p>
+Alphabets,
+Noun,Pronoun,
+Verb,
+Past, Present Tense,
+Gender,
+Number
+Sentence formation
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgafc67cd" class="outline-4">
+<h4 id="orgafc67cd">Level 2</h4>
+<div class="outline-text-4" id="text-orgafc67cd">
+<p>
+All 7 cases :
+Order/Request,
+Past and Future
+Tenses, Verb Root and Forms,
+Krt Word
+</p>
+</div>
+</div>
+
+<div id="outline-container-org995a8ae" class="outline-4">
+<h4 id="org995a8ae">Level 3:</h4>
+<div class="outline-text-4" id="text-org995a8ae">
+<p>
+All 7 cases of mostly used vowel ending words,
+Analyzing sentences in stories and Subhitam,
+Indeclinable;
+</p>
+
+<p>
+Conversatoins and construction of comples sentences with excercises
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c5872b" class="outline-3">
+<h3 id="org7c5872b">Course 2:</h3>
+<div class="outline-text-3" id="text-org7c5872b">
+</div>
+<div id="outline-container-orge28a45b" class="outline-4">
+<h4 id="orge28a45b">Level 4</h4>
+<div class="outline-text-4" id="text-orge28a45b">
+<p>
+Different Verb, <br />
+Form of Ten <br />
+Categories, Passive Voice, <br />
+Adverb, Numerals, <br />
+stories and subhashitam 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8ff48d8" class="outline-4">
+<h4 id="org8ff48d8">Level 5</h4>
+<div class="outline-text-4" id="text-org8ff48d8">
+<p>
+Sandhi : Swara , Vyanjana , Visarga <br />
+with examples and exercises
+</p>
+
+<p>
+Tips to decode shloka
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org108b35f" class="outline-3">
+<h3 id="org108b35f">Course 3:</h3>
+<div class="outline-text-3" id="text-org108b35f">
+</div>
+<div id="outline-container-orge26f7e9" class="outline-4">
+<h4 id="orge26f7e9">Level 7</h4>
+<div class="outline-text-4" id="text-orge26f7e9">
+<p>
+All 7 Cases of Nouns,<br />
+adjective <br />
+numerals, pronouns of all type words
+</p>
+
+<p>
+called as shabdamanjari
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0dfb954" class="outline-4">
+<h4 id="org0dfb954">Level 8</h4>
+<div class="outline-text-4" id="text-org0dfb954">
+<p>
+Dhatumanjari - Verb Forms, root category, <br />
+sarva-ardha-dhaduka tenses and moods formation 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orge9a49a8" class="outline-4">
+<h4 id="orge9a49a8">Level 9</h4>
+<div class="outline-text-4" id="text-orge9a49a8">
+<p>
+Chandamama Story analysis for sentence <br />
+Construction and usage of tense, nouns, adjective adverb etc.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge7e4517" class="outline-3">
+<h3 id="orge7e4517">Course 4 :</h3>
+<div class="outline-text-3" id="text-orge7e4517">
+</div>
+<div id="outline-container-orgcc6dfdb" class="outline-4">
+<h4 id="orgcc6dfdb">Level 9</h4>
+<div class="outline-text-4" id="text-orgcc6dfdb">
+<p>
+Pancharantna Katha
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb2ed900" class="outline-4">
+<h4 id="orgb2ed900">Level 10:</h4>
+<div class="outline-text-4" id="text-orgb2ed900">
+<p>
+Subhashitam of Bhattahari
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik</p>
+<p class="date">Created: 2023-10-30 Mon 12:12</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

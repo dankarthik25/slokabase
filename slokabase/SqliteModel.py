@@ -1,3 +1,16 @@
+# Validate Input: https://stackabuse.com/flask-form-validation-with-flask-wtf/
+# prepared statement:  in flask
+# Parameterized Query avoid sql injection
+
+# TODO : Parameterized Query avoid sql injection
+#query = """Update employee set Salary = %s where id = %s""" 
+# https://pynative.com/python-mysql-execute-parameterized-query-using-prepared-statement/
+#tuple1 = (8000, 5)
+#cursor.execute(query, tuple1)
+
+# DONE: ABLE to give input text containing ' and " buy replacing with ‘ and “
+# TODO: Need when reading need to replace with ' and "
+
 import sys
 import sqlite3
 
@@ -19,6 +32,8 @@ def get_insert_query(table_name,**kwargs):
     
     for key, value in kwargs.items():
         if isinstance(value, str): # type(value) == 'str': 
+            value=value.replace("'",'‘') # remove any confusion in query you can re-cover the data when read query replace with ' or "
+            value=value.replace('"','“') # remove any confusion in query           
             Entry_Value = Entry_Value + """'{}'{}""".format(str(value),comma)    
         else:
             Entry_Value = Entry_Value + """{}{}""".format(str(value),comma)    
@@ -86,6 +101,8 @@ def get_update_query(table_name, *args, **kwargs):
     comma = ', '
     for key, value in kwargs.items():
         if isinstance(value, str):
+            value=value.replace("'",'‘') # remove any confusion in query you can re-cover the data when read query replace with ' or "
+            value=value.replace('"','“') # remove any confusion in query           
             query =  """{} {}='{}'{} """.format(query, key,value,comma)  #  query + str(key) + '=' + str(value) + comma
         else:
             query =  """{} {}={}{} """.format(query, key,str(value),comma)  
