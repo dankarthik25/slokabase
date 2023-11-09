@@ -146,7 +146,7 @@ def submitaddnewsong():
             print(f"[MATCH]: NO.of sloak eng =NO.of translation= {len(song['translation'].split(line_split)) }")
 
     if not status_flag:
-        print(reason) # reason for not able to create the song
+#        print(reason) # reason for not able to create the song
         my_color = 'lightcoral'
     else:
         song_info['sloka_statues'] = 1
@@ -171,7 +171,7 @@ def submitaddnewsong():
 
         # Update the synonyms entry:
         # if (len(song['synonyms']) >0) and ( len(song['sloka_eng'].split('\n\n')) ==  len(song['synonyms'].split('\n\n')) )  :
-        print('need to update synonyms')
+#        print('need to update synonyms')
         list_sloka = song['synonyms'].split('\n\n')    
         for idx, sloka in enumerate(list_sloka):
             print(f"Update song no:{song_idx} and sysnonyms no. {idx}")
@@ -180,7 +180,7 @@ def submitaddnewsong():
             mySongs_sql.update_entry( *['song_idx','slokas_no']  , **song)
         # Update the translation entry 
         del song['synonyms']
-        print('need to update translation')
+#        print('need to update translation')
         list_sloka = song['translation'].split('\n\n')    
         for idx, sloka in enumerate(list_sloka):
             print(f"Update song no:{song_idx} and translation no. {idx}")
@@ -191,7 +191,7 @@ def submitaddnewsong():
         my_color='lightgreen'
 
         reason= f"""CREATED NEW SONG:<br>song index: {song['song_idx']}<br>song name: {song_info['song_name']} """
-        print(my_color, reason)
+#        print(my_color, reason)
     response = f"""<div style="background-color:{my_color} ;margin: 10px; padding: 10px;">{reason}</div>"""
 
     if status_flag:
@@ -228,7 +228,7 @@ def hindi2eng():
 @app.route("/submit_hindi2eng")
 def submit_hindi2eng():
     hindi_text = request.args.get("Hindi")
-    print("request htmx get loaded",hindi_text)
+#    print("request htmx get loaded",hindi_text)
     # hindi_text = request.form["Hindi"]
     index_dic = dict()
     with open ('doc/san2english.csv','r') as f:
@@ -284,20 +284,21 @@ def search():
     q = request.args.get("q")
     all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []    
-    print(q)
+#    print(q)
     r = re.compile(q)
     match_words = list(filter(r.match, all_dict_word)) # Read Note below
     for match_word in match_words:
         data = get_single_dic('dictionary.db',match_word)
         # print(data)
         if len(data)==0:
-            print('error', match_word, data)
-            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
+            pass            
+#            print('error', match_word, data)
+#            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
         else: 
             data = add_reference2single_dict('slokabase.db',data)
             all_dict_data.append(data)
     return render_template('search.html',all_dict_data=all_dict_data)
-    print(newlist)
+#    print(newlist)
 
 @app.route("/lib")
 def lib():
@@ -306,10 +307,10 @@ def lib():
     return render_template('lib.html', song_list=song_list,)
 
 def get_linewise_synonym(my_sloka):
-    print('get linewise synonym: my_sloka:',my_sloka)
+#    print('get linewise synonym: my_sloka:',my_sloka)
     if my_sloka['synonyms'] !=None:
-        print(my_sloka['synonyms'])
-        print('before split: ',my_sloka['synonyms'].split('\n') )
+#        print(my_sloka['synonyms'])
+#        print('before split: ',my_sloka['synonyms'].split('\n') )
         #####################################################
         synonym_list=[]
         for line in my_sloka['synonyms'].split('\n'):
@@ -324,27 +325,27 @@ def get_linewise_synonym(my_sloka):
                     linewise_synonym_list.append(temp_dic)
             synonym_list.append(linewise_synonym_list)
         
-        print('\n ### synonym_list',synonym_list)
+#        print('\n ### synonym_list',synonym_list)
         #####################################################
         filtered_synonyms = ' '.join(my_sloka['synonyms'].split('\n')).split(';')
-        print('# '*10)
-        print('Temp synonyms : ',filtered_synonyms) 
+#        print('# '*10)
+#        print('Temp synonyms : ',filtered_synonyms) 
         new_synonyms=[]
         for item in filtered_synonyms:
             if item != '':
                 temp_dic = dict()
-                print('item: ',item)                
+#                print('item: ',item)                
                 pairs = item.split('=')
                 if len(pairs) == 2:
-                    print('pairs:',pairs)
+#                    print('pairs:',pairs)
                     # temp_dic=dict()
                     temp_dic[pairs[0].strip()] = pairs[1].strip()
                     new_synonyms.append(temp_dic)
             # new_synonyms.append(temp_dic)
-        print('# # # new_synonyms :', new_synonyms)
+#        print('# # # new_synonyms :', new_synonyms)
         my_sloka['synonyms']    = new_synonyms
     else :
-        print('synonmy_list empty')
+#        print('synonmy_list empty')
         synonym_list = None
 
     return synonym_list
@@ -427,7 +428,7 @@ def sloka(song_id,sloka_id):
     my_sloka[0]['song_short_name'] = song_metadata[0]['song_short_name']
     my_sloka[0]['song_name'] = song_metadata[0]['song_name']
 
-    print(my_sloka)
+#    print(my_sloka)
      
     return render_template('my_sloka.html', my_sloka_meta=my_sloka, linewise_synonym = synonym_list, song_id=song_id)
 
