@@ -40,6 +40,7 @@ def get_insert_query(table_name,**kwargs):
     Entry_Value = Entry_Value.rstrip(comma)
 
     query = """INSERT INTO {} ({}) VALUES ({});""".format(table_name,Entry_Field, Entry_Value)        
+#    print(query)
     return query
 
 # get_insert_query('Song_Index' ,song_name = 'Nector of Instruction', song_short_name ='noi', sloka_statues=1)
@@ -56,16 +57,19 @@ def get_read_query(table_name, *args, **kwargs):
         cond_query=''
         for key, value in kwargs.items():
             if isinstance(value, str): # type(value) == 'str': 
-                cond_query =  """{} {}='{}'{} """.format(cond_query, key,kwargs[key],' and')
+                value=value.replace("'",'‘') # remove any confusion in query you can re-cover the data when read query replace with ' or "
+                value=value.replace('"','“') # remove any confusion in query           
+
+                cond_query =  """{} {}='{}'{} """.format(cond_query, key,value,' and')
             else:
-                cond_query =  """{} {}={}{} """.format(cond_query, key,kwargs[key],' and')                
+                cond_query =  """{} {}={}{} """.format(cond_query, key,value,' and')                
         cond_query = cond_query.rstrip(' and') 
         query = query + ' WHERE ' + cond_query + ';'
     else:
         query += ';' 
 
 
-    # print('get_read_query:' ,query)
+#    print('get_read_query:' ,query)
     return query
 
 # get_read_query('temp' )  # >>> SELECT * FROM temp;
@@ -110,7 +114,7 @@ def get_update_query(table_name, *args, **kwargs):
     query = query.rstrip(comma) 
     
     query += cond_query
-    
+#    print(query)
     return query
     
 # get_update_query('store', quantity=10, price=15, item='indian mango')
@@ -190,7 +194,7 @@ class SqliteModel():
     def read_entry(self, *args, **kwargs):
         # query = "SELECT * FROM {};".format(self.table_name)
         query = get_read_query(self.table_name, *args,**kwargs)
-        # print(query)
+#        print(query)
         self.db_cursor = self.db_connect.cursor()
         try :
             self.db_cursor.execute(query)
@@ -210,7 +214,7 @@ class SqliteModel():
     def update_entry(self,*args, **kwargs):
         query = get_update_query(self.table_name,*args,**kwargs)
         self.db_cursor = self.db_connect.cursor()
-        #print(query)
+        # print(query)
         try :
             self.db_cursor.execute(query)        
             self.db_connect.commit()

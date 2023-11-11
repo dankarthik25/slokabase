@@ -10,6 +10,10 @@
 conda env create -f environment.yml  # create env with existing env file
 conda activate vedabase
 
+
+# method 2
+python run.py # To run the code       : To view existing songs but not for adding new songs
+
 # conda env export --no-builds > environment.yml # to export env 
 
 # Run flask 
@@ -20,10 +24,6 @@ conda activate vedabase
 
 flask run
 
-# method 2
-python main.py
-python run.py # To run the code       : To view existing songs but not for adding new songs
-
 
 ```
 # Project Progress
@@ -33,8 +33,8 @@ python run.py # To run the code       : To view existing songs but not for addin
 eg : http://kksongs.org/songs/p/pralayapayodhijale.html 
 2. `DONE` Automate web scrapping  for getting the song and Translation to loading in **Database**
 
-## `TODO` Convert deva-nagri language to iskcon-font type:
-there are may non iskcon song which don't follow them so we need to covert them to hin-glish (iskcon-font)
+## `TODO` Convert deva-nagri language to iast-font type:
+there are may non iskcon song which don't follow them so we need to covert them to hin-glish (iast-font)
  we can get directly from vedabase with hindi and hin-glish.
 
 ## `TODO` For newly added songs we need to automate word-to-word meaning

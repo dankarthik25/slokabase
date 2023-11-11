@@ -117,12 +117,12 @@ def submitaddnewsong():
     song['synonyms']          = request.form["Song Synonyms"]
     song['translation']       = request.form["Song Translation"]
 
-    song['sloka_eng']      = song['sloka_eng'].replace(" ","")
-    song['synonyms']       = song['synonyms'].replace(" ","")
-    song['translation']    = song['translation'].replace(" ","")
+    # song['sloka_eng']      = song['sloka_eng']#.replace(" ","")
+    # song['synonyms']       = song['synonyms']#.replace(" ","")
+    # song['translation']    = song['translation']#.replace(" ","")
     # song['purpot']      = request.form["Song Purpot"]
     # print(song_info, song)
-    # print(song_info, song)
+    print(song['translation'].strip('\n'))
     if len(song_info['song_short_name'])==0:
         song_info['song_short_name'] = song_info['song_name'].replace(" ","")
 
@@ -204,7 +204,7 @@ def submitaddnewsong():
 
 @app.route("/dictionary")
 def dictionary():
-    all_dict_word =get_all_dict_words('dictionary.db')
+    # all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []
 #    for dic_word in all_dict_word:
 #        # dic_word = 'tomāra'
@@ -456,10 +456,12 @@ if __name__ == '__main__':
 
     # app.run(debug=True)
 
-#    with app.app_context():
-#        app.run(debug=True)
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+    with app.app_context():
+        app.run(debug=True)
+#    from waitress import serve
+#    serve(app, host="0.0.0.0", port=8080)
+
+
 
 # def add_reference2single_dict(db_name,data):
 #     db_path = os.path.join(os.getcwd(),db_name)
