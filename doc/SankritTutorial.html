@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-11-19 Sun 14:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SankritTutorial</title>
+<meta name="author" content="Karthik" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="icon" type="image/png" href="https://deepalgorithms.in/assets/icons/favicon.png">
+<link rel="stylesheet" type="text/css" href="/home/karthik/mynotes/org2html/org-theme-collection/readtheorg-htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/home/karthik/mynotes/org2html/org-theme-collection/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">SankritTutorial</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc8535eb">Alphabets akṣara/vraṇa  [अक्षर/व्रण]:</a>
+<ul>
+<li><a href="#org05a2ee1"><b>svara</b> [स्वरा] vowels</a></li>
+<li><a href="#org5b29411"><b>vyañjanā</b> [व्यञ्जना] consonants</a></li>
+<li><a href="#org82c3f3e">IAST</a></li>
+</ul>
+</li>
+<li><a href="#orgd200e00">[POS] Part Of Speech:</a>
+<ul>
+<li><a href="#orge3a69fe">[dhātu,shabda, avyaya] Three basic parts of speech</a></li>
+<li><a href="#orgd99624b">Vibhaktis :</a></li>
+<li><a href="#org283220a">Verbs</a></li>
+</ul>
+</li>
+<li><a href="#org5761b56">Sandhi</a></li>
+<li><a href="#org4668e0d">News</a></li>
+<li><a href="#orgc709270">github OpenSource Projects</a></li>
+</ul>
+</div>
+</div>
+<p>
+source : <a href="http://www.danam.co.uk/Sanskrit/Sanskrit%20Introductory/Wikner%20Sanskrit%20Intro.pdf">http://www.danam.co.uk/Sanskrit/Sanskrit%20Introductory/Wikner%20Sanskrit%20Intro.pdf</a> <br />
+<a href="https://www.udemy.com/course/complete-comprehensive-and-easy-sanskrit-for-beginners/learn/lecture/24780946#overview">https://www.udemy.com/course/complete-comprehensive-and-easy-sanskrit-for-beginners/learn/lecture/24780946#overview</a>
+</p>
+
+<div id="outline-container-orgc8535eb" class="outline-2">
+<h2 id="orgc8535eb">Alphabets akṣara/vraṇa  [अक्षर/व्रण]:</h2>
+<div class="outline-text-2" id="text-orgc8535eb">
+<p>
+In Sanskrit,alphabets are know as <b>akṣara</b> अक्ष             <br />
+and  there are 14 Vowels <b>svara</b> [स्वरा] and 42 Consonants <b>vyañjanā</b> [व्यञ्जना] <br />
+Devanagri , is based on phonetic principles that consider both the manner and place of articulation of the consonants and vowels they represent. This arrangement is usually referred to as the varṇamālā ("garland of letters") <br />
+In Sanskrit,alphabets are Expalined here  <a href="https://vedantatoday.com/sanskrit-letters-aksharani/">https://vedantatoday.com/sanskrit-letters-aksharani/</a>
+</p>
+</div>
+
+<div id="outline-container-org05a2ee1" class="outline-3">
+<h3 id="org05a2ee1"><b>svara</b> [स्वरा] vowels</h3>
+<div class="outline-text-3" id="text-org05a2ee1">
+
+<div id="org6d0ed87" class="figure">
+<p><img src="../images/The-five-places-of-origin-of-the-Sanskrit-letters.png" alt="The-five-places-of-origin-of-the-Sanskrit-letters.png" />
+</p>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">devanagari</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">kaṇṭhya (Guttural)</td>
+<td class="org-left">अ [a]  आ[ā]</td>
+</tr>
+
+<tr>
+<td class="org-left">tālavya (Palatal)</td>
+<td class="org-left">इ[i]  ई[ī]</td>
+</tr>
+
+<tr>
+<td class="org-left">oṣṭhya (Labial)</td>
+<td class="org-left">उ[u] ऊ[ū]</td>
+</tr>
+
+<tr>
+<td class="org-left">mūrdhanya (Retroflex)</td>
+<td class="org-left">ऋ[ṛ] ॠ[ṝ]</td>
+</tr>
+
+<tr>
+<td class="org-left">dantya (Dental)</td>
+<td class="org-left">ऌ ॡ</td>
+</tr>
+
+<tr>
+<td class="org-left">kaṇṭhatālavya (Palatoguttural)</td>
+<td class="org-left">ए[e]  ऎ [ē]  ऐ[ai]</td>
+</tr>
+
+<tr>
+<td class="org-left">kaṇṭhoṣṭhya (Labioguttural)</td>
+<td class="org-left">ओ[o]  ऒ [ō] औ[au]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">अं [aṁ] अः [aḥ]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ॲ  ऍ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5b29411" class="outline-3">
+<h3 id="org5b29411"><b>vyañjanā</b> [व्यञ्जना] consonants</h3>
+<div class="outline-text-3" id="text-org5b29411">
+<p>
+source : <a href="https://en.wikipedia.org/wiki/Devanagari">https://en.wikipedia.org/wiki/Devanagari</a> Consonants
+<img src="../images/Screenshots_2023-10-30T11-55-51.png" alt="Screenshots_2023-10-30T11-55-51.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org82c3f3e" class="outline-3">
+<h3 id="org82c3f3e">IAST</h3>
+<div class="outline-text-3" id="text-org82c3f3e">
+<p>
+International Alphabet of Sanskrit Transliteration (IAST) is a transliteration scheme that allows the lossless romanisation of Indic scripts as employed by Sanskrit and related Indic languages. It is based on a scheme that emerged during the 19th century from suggestions by Charles Trevelyan, William Jones, Monier Monier-Williams and other scholars, and formalised by the Transliteration Committee of the Geneva Oriental Congress, in September 1894.
+</p>
+
+
+<div id="orge77b51a" class="figure">
+<p><img src="../images/Devanagari2IAST_v2.png" alt="Devanagari2IAST_v2.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd200e00" class="outline-2">
+<h2 id="orgd200e00">[POS] Part Of Speech:</h2>
+<div class="outline-text-2" id="text-orgd200e00">
+<ul class="org-ul">
+<li>noun (नामपदम)
+<ul class="org-ul">
+<li>gender (लिंग)
+<ul class="org-ul">
+<li>male : Masculine (pum-linga)</li>
+<li>female: Femine  (stri-linga)</li>
+<li>neutral: Neuter (napumsaka-linga)</li>
+</ul></li>
+<li>plural
+<ul class="org-ul">
+<li>eka-vacan</li>
+<li>dvi-vacan</li>
+<li>bahu-vacan</li>
+</ul></li>
+</ul></li>
+<li>pronoun (सर्वनाम)</li>
+<li>Adjective(विशेषण)</li>
+<li><p>
+Verb(क्रिया)
+</p>
+<ul class="org-ul">
+<li>puruṣa
+<ul class="org-ul">
+<li>1st Person : pratama Pursha</li>
+<li>2nd Person : madhyama-purusha</li>
+<li>3rd Person : uttama-pursha</li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li>pada
+<ul class="org-ul">
+<li>parasmai-pada(an expression for another)</li>
+<li>ātmane-pada (an expression for oneself)</li>
+<li>ubhaya-pada</li>
+</ul></li>
+</ul></li>
+<li>Adverb(क्रिया विशेषण)</li>
+<li>Preposition(सम्बंधसूचक अव्यय)</li>
+<li>Conjunction(समुच्यबोधक)</li>
+<li>Interjection(विस्म्यादिभोदक)</li>
+</ul>
+</div>
+
+
+
+<div id="outline-container-orge3a69fe" class="outline-3">
+<h3 id="orge3a69fe">[dhātu,shabda, avyaya] Three basic parts of speech</h3>
+<div class="outline-text-3" id="text-orge3a69fe">
+<p>
+soruce : <a href="https://sanskritdocuments.org/learning_tools/grammarintro_sa.html">https://sanskritdocuments.org/learning_tools/grammarintro_sa.html</a> <br />
+There are three basic parts of speech in sanskrit :
+</p>
+<ul class="org-ul">
+<li>shabda (nouns/ pronouns/ adjectives/ participles),</li>
+<li>dhātu(verbs), (indicated with a root symbol \(\sqrt{\;\;}\))</li>
+<li>avyaya (indeclinables: prepositions,conjunctions,adverbs, exclamations etc.)</li>
+</ul>
+
+<p>
+Here we shall discuss declentions of nouns .
+The form of a noun used in a sentence dependes on two things :
+</p>
+<ul class="org-ul">
+<li>Its number, (singular,dual or plural) and</li>
+<li>its vibhakti .</li>
+</ul>
+
+<p>
+The vibhakti to be used is governed by the role the noun plays in the sentence, <br />
+</p>
+<ul class="org-ul">
+<li>e.g . subject,object, instrument of action etc .</li>
+</ul>
+<p>
+Here is a brief explanation of vibhaktis along with an example :
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd99624b" class="outline-3">
+<h3 id="orgd99624b">Vibhaktis :</h3>
+<div class="outline-text-3" id="text-orgd99624b">
+<p>
+source : <a href="https://sanskritdocuments.org/learning_tools/grammarintro_sa.html">https://sanskritdocuments.org/learning_tools/grammarintro_sa.html</a> <br />
+There are eight possible vibhaktis of a word . <br />
+Of these, six relate to an action and hence are also  "kāraks" <br />
+The other two ṣaṣṭhī(Possesive) and sambodhan(Denominative) do not necessarily associate with an action. <br />
+The following table lists the vibhaktis and their meanings. <br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">prathamā</td>
+<td class="org-left">प्रथमा</td>
+<td class="org-left">Nominative</td>
+<td class="org-left">performer/subject</td>
+</tr>
+
+<tr>
+<td class="org-left">dvitīyā</td>
+<td class="org-left">द्वितीया</td>
+<td class="org-left">Accusative</td>
+<td class="org-left">object</td>
+</tr>
+
+<tr>
+<td class="org-left">tr̥tīyā</td>
+<td class="org-left">तृतीया</td>
+<td class="org-left">Instrumental</td>
+<td class="org-left">instrument</td>
+</tr>
+
+<tr>
+<td class="org-left">caturthī</td>
+<td class="org-left">चतुर्थी</td>
+<td class="org-left">Dative</td>
+<td class="org-left">for whom the action is performed</td>
+</tr>
+
+<tr>
+<td class="org-left">paṁcamī</td>
+<td class="org-left">पंचमी</td>
+<td class="org-left">Ablative</td>
+<td class="org-left">from where the action is performed</td>
+</tr>
+
+<tr>
+<td class="org-left">ṣaṣṭhī</td>
+<td class="org-left">षष्ठी</td>
+<td class="org-left">Possesive</td>
+<td class="org-left">not strictly a vibhakti, denotes possesi on</td>
+</tr>
+
+<tr>
+<td class="org-left">saptamī</td>
+<td class="org-left">सप्तमी</td>
+<td class="org-left">Locative</td>
+<td class="org-left">location of the action</td>
+</tr>
+
+<tr>
+<td class="org-left">sambodhan</td>
+<td class="org-left">सम्बोधन्</td>
+<td class="org-left">Denominative</td>
+<td class="org-left">used to address someone</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+<img src="../images/Screenshots_2023-11-19T09-40-13.png" alt="Screenshots_2023-11-19T09-40-13.png" />
+source: <a href="https://www.youtube.com/watch?v=H3_e2fccEdk">https://www.youtube.com/watch?v=H3_e2fccEdk</a>
+</p>
+
+<p>
+ <a href="http://bhagavadgita.org.in/Blogs/5aa8b1d95369ed19b8f4131a">http://bhagavadgita.org.in/Blogs/5aa8b1d95369ed19b8f4131a</a> <br />
+X = \(\frac{Words \;representing \;properties}{Words \;representing \;objects}\) = <b>Words representing properties : Words representing objects</b>
+</p>
+<ul class="org-ul">
+<li>For most languages:
+<ul class="org-ul">
+<li>X &lt; 1</li>
+<li>X \(\approx\)  1 (approx.)</li>
+<li>X  &gt; 1 (slightly)</li>
+</ul></li>
+<li>For Sanskrit:
+<ul class="org-ul">
+<li>X \(\approx\) 10<sup>5</sup> (Lakhs)</li>
+</ul></li>
+</ul>
+
+<p>
+dhātu [धातु] : root word <br />
+A dhātu is a rudimentary verbal element form which words are derived: it is nuclcus to which other word fragments are added to form a whole word.
+</p>
+
+
+<blockquote>
+<p>
+In Sanskrit there are 2012 dhAtus. 
+every word in sankrit end with vowel(svara स्वरा)
+</p>
+</blockquote>
+</div>
+</div>
+
+
+<div id="outline-container-org283220a" class="outline-3">
+<h3 id="org283220a">Verbs</h3>
+<div class="outline-text-3" id="text-org283220a">
+<p>
+A dhātu (indicated with a root symbol \(\sqrt{\;\;}\)) develops to form a stem (anga) and to the stem is added a pernonal ending (tin-vibhakti) to complete verb (kriya).
+<a href="https://sanskritdocuments.org/learning_tutorial_wikner/P009.html">https://sanskritdocuments.org/learning_tutorial_wikner/P009.html</a>
+</p>
+
+<p>
+A dātu indicated with a surd or root symbol  \(\sqrt{\;\;}\) before i) develops to form a stem a  (anga ) and to the stem is added a p ersonal ending (tiṅ-vibhakti ) to form a complete verb kriyā ).
+</p>
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">prathama-puruṣa</td>
+<td class="org-left">tiṣṭhati</td>
+<td class="org-left">he /she /it stands</td>
+</tr>
+
+<tr>
+<td class="org-left">madhyama-puruṣa</td>
+<td class="org-left">tiṣṭhasi</td>
+<td class="org-left">you stand</td>
+</tr>
+
+<tr>
+<td class="org-left">uttama-puruṣa</td>
+<td class="org-left">tiṣṭhāmi</td>
+<td class="org-left">I stand</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+pursha :
+</p>
+<ul class="org-ul">
+<li>1st Person : pratama Pursha</li>
+<li>2nd Person : madhyama-purusha</li>
+<li>3rd Person : uttama-pursha</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5761b56" class="outline-2">
+<h2 id="org5761b56">Sandhi</h2>
+<div class="outline-text-2" id="text-org5761b56">
+<p>
+There are there types of Sandhih
+</p>
+<ul class="org-ul">
+<li>svara sandhih</li>
+<li>vyanjana sandhih</li>
+<li>visarga  sandhih</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org4668e0d" class="outline-2">
+<h2 id="org4668e0d">News</h2>
+<div class="outline-text-2" id="text-org4668e0d">
+<p>
+vipratiṣedhe paraṁ kāryam : Sanskrit Puzzle? or Cambridge's Conspiracy! | Rishi Rajpopat on Ashtadhyayi : <br />
+<a href="https://www.youtube.com/watch?v=4-5EBsNOtKg&amp;list=PLwij7LK8S1MOOfObcfIR5FWIZ-N4AR7Na&amp;index=1">https://www.youtube.com/watch?v=4-5EBsNOtKg&amp;list=PLwij7LK8S1MOOfObcfIR5FWIZ-N4AR7Na&amp;index=1</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgc709270" class="outline-2">
+<h2 id="orgc709270">github OpenSource Projects</h2>
+<div class="outline-text-2" id="text-orgc709270">
+<p>
+<a href="https://github.com/gasyoun">https://github.com/gasyoun</a>
+</p>
+
+<p>
+<a href="https://github.com/gasyoun?tab=repositories">https://github.com/gasyoun?tab=repositories</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Nagari</td>
+<td class="org-left">Public</td>
+<td class="org-left">Varnamala, ligatures, devanagari  5  2 GNU General Public License v3.0 Updated on Apr 5, 2021</td>
+</tr>
+
+<tr>
+<td class="org-left">SanskritLexicography</td>
+<td class="org-left">Public</td>
+<td class="org-left">Cologne headword lists  HTML  3 Updated on Jan 6, 2021</td>
+</tr>
+
+<tr>
+<td class="org-left">MWderivations</td>
+<td class="org-left">Public</td>
+<td class="org-left">Forked from funderburkjim/MWderivations</td>
+</tr>
+
+<tr>
+<td class="org-left">Derivations of headwords in the Monier-Williams (1899) dictionary</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">HTML Updated on Dec 3, 2020</td>
+</tr>
+
+<tr>
+<td class="org-left">ClickToQuote</td>
+<td class="org-left">Public</td>
+<td class="org-left">Forked from lidazaikova/ClickToQuote</td>
+</tr>
+
+<tr>
+<td class="org-left">Click-to-Quote with</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Variables JS  HTML MIT License Updated on Apr 21, 2020</td>
+</tr>
+
+<tr>
+<td class="org-left">DeepPavlov</td>
+<td class="org-left">Public</td>
+<td class="org-left">Forked from deeppavlov/DeepPavlov</td>
+</tr>
+
+<tr>
+<td class="org-left">Parallel-Sanskrit-Corpora</td>
+<td class="org-left">Public</td>
+<td class="org-left">Parallel Sanskrit Corpora with European languages MIT License Updated on Nov 28, 2019</td>
+</tr>
+
+<tr>
+<td class="org-left">gasyoun.github.io</td>
+<td class="org-left">Public</td>
+<td class="org-left">Creating Pages with the automatic generator HTML  3  1 Updated on Nov 22, 2016</td>
+</tr>
+
+<tr>
+<td class="org-left">ScharfSandhi Public</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Forked from funderburkjim/ScharfSandhi Software to apply sandhi to Sanskrit text   Python MIT License Updated on Sep 7, 2015</td>
+</tr>
+
+<tr>
+<td class="org-left">SanskritSorting</td>
+<td class="org-left">Public</td>
+<td class="org-left">Forked from drdhaval2785/SanskritSorting Codes written by Dr. Dhaval Patel for Sanskrit Natural Language Programming  PHP Updated on May 19, 2015</td>
+</tr>
+
+<tr>
+<td class="org-left">SanskritMacros</td>
+<td class="org-left">Public</td>
+<td class="org-left">EmEditor, MS Excel, MS Word Sanskrit macros, scripts  R  1  1 Updated on Oct 25, 2014</td>
+</tr>
+
+<tr>
+<td class="org-left">SanskritCorpora</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Public Word by word translations  3 Updated on Oct 6, 2014</td>
+</tr>
+
+<tr>
+<td class="org-left">sanskrit</td>
+<td class="org-left">Public</td>
+<td class="org-left">Forked from shreevatsa/sanskrit</td>
+</tr>
+
+<tr>
+<td class="org-left">Sanskrit-related code</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">data GNU General Public License v2.0 Updated on Aug 22, 2014</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<p>
+<a href="https://github.com/sanskrit-lexicon-scans/mw">https://github.com/sanskrit-lexicon-scans/mw</a>
+</p>
+
+
+<p>
+Dr. Dhaval Patel
+<a href="https://github.com/drdhaval2785?tab=repositories">https://github.com/drdhaval2785?tab=repositories</a>
+</p>
+
+
+
+
+<p>
+<a href="https://sanskritmedium.com/topics/emotions/">https://sanskritmedium.com/topics/emotions/</a>
+</p>
+
+
+<p>
+<a href="https://github.com/orgs/sanskrit-lexicon-scans/repositories">https://github.com/orgs/sanskrit-lexicon-scans/repositories</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik</p>
+<p class="date">Created: 2023-11-19 Sun 14:36</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

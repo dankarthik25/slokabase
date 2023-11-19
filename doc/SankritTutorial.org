@@ -1,8 +1,9 @@
-#+TITLE: Sankrit Udemy Tutorial
+#+TITLE: SankritTutorial
 #+AUTHOR: Karthik
 #+SETUPFILE: ~/mynotes/org2html/org-theme-collection/theme2.setup
 
 
+source : http://www.danam.co.uk/Sanskrit/Sanskrit%20Introductory/Wikner%20Sanskrit%20Intro.pdf \\
 https://www.udemy.com/course/complete-comprehensive-and-easy-sanskrit-for-beginners/learn/lecture/24780946#overview
 
 * Alphabets akṣara/vraṇa  [अक्षर/व्रण]:
@@ -11,8 +12,9 @@ and  there are 14 Vowels *svara* [स्वरा] and 42 Consonants *vyañjanā
 Devanagri , is based on phonetic principles that consider both the manner and place of articulation of the consonants and vowels they represent. This arrangement is usually referred to as the varṇamālā ("garland of letters") \\
 In Sanskrit,alphabets are Expalined here  https://vedantatoday.com/sanskrit-letters-aksharani/
     
-** *svara* [स्वरा]
-[[file:./images/The-five-places-of-origin-of-the-Sanskrit-letters.png]]
+** *svara* [स्वरा] vowels
+
+[[file:../images/The-five-places-of-origin-of-the-Sanskrit-letters.png]]
 
 | devanagari                     |                      |
 |--------------------------------|--------------------|
@@ -26,128 +28,182 @@ In Sanskrit,alphabets are Expalined here  https://vedantatoday.com/sanskrit-lett
 |                                | अं [aṁ] अः [aḥ]    |
 |                                | ॲ  ऍ               |
 
-** *vyañjanā* [व्यञ्जना]
+** *vyañjanā* [व्यञ्जना] consonants
 source : https://en.wikipedia.org/wiki/Devanagari Consonants
-[[file: ./images/Screenshots_2023-10-30T11-55-51.png]]
+file:../images/Screenshots_2023-10-30T11-55-51.png
 ** IAST
 International Alphabet of Sanskrit Transliteration (IAST) is a transliteration scheme that allows the lossless romanisation of Indic scripts as employed by Sanskrit and related Indic languages. It is based on a scheme that emerged during the 19th century from suggestions by Charles Trevelyan, William Jones, Monier Monier-Williams and other scholars, and formalised by the Transliteration Committee of the Geneva Oriental Congress, in September 1894.
 
-| अ a    | आ ā      | इ i     | ई ī    | उ u   | ऊ ū  | ऋ ṛ  | ॠ ṝ  |
-| ऌ ḷ    | ॡ ḹ      | ए e     | ऎ ē    | ऐ ai  | ओ o  | ऒ ō   | औ au |
+file:../images/Devanagari2IAST_v2.png
 
-| अं aṁ  | अः aḥ    | ॐ oṁ    |
+# | अ a    | आ ā      | इ i     | ई ī    | उ u   | ऊ ū  | ऋ ṛ  | ॠ ṝ  |
+# | ऌ ḷ    | ॡ ḹ      | ए e     | ऎ ē    | ऐ ai  | ओ o  | ऒ ō   | औ au |
 
-| क ka   | ख kha    | ग ga    | घ gha  | ङ ṅa  |
-| च ca   | छ cha    | ज ja    | झ jha  | ञ ña  |
-| ट ṭa   | ठ ṭha    | ड ḍa    | ढ ḍha  | ण ṇa  |
-| त ta   | थ tha    | द da    | ध dha  | न na  |
-| प pa   | फ pha    | ब ba    | भ bha  | म ma  |
-| य ya   | र ra     | ल la    | व va   |
-| श śa   | ष ṣa     | स sa    | ह ha   |
-| ळ ḻa   | क्ष kṣa  | ज्ञ jña |
+# | अं aṁ  | अः aḥ    | ॐ oṁ    |
 
+# | क ka   | ख kha    | ग ga    | घ gha  | ङ ṅa  |
+# | च ca   | छ cha    | ज ja    | झ jha  | ञ ña  |
+# | ट ṭa   | ठ ṭha    | ड ḍa    | ढ ḍha  | ण ṇa  |
+# | त ta   | थ tha    | द da    | ध dha  | न na  |
+# | प pa   | फ pha    | ब ba    | भ bha  | म ma  |
+# | य ya   | र ra     | ल la    | व va   |
+# | श śa   | ष ṣa     | स sa    | ह ha   |
+# | ळ ḻa   | क्ष kṣa  | ज्ञ jña |
 
-https://miro.medium.com/v2/resize:fit:640/format:webp/1*nJNxFmJaHxyJTtVFkhGTlg.png
+# https://miro.medium.com/v2/resize:fit:640/format:webp/1*nJNxFmJaHxyJTtVFkhGTlg.png
 
-
-
-
-* Course Structure
-Lesson Plan:
-** Preview 
-Top Sankrit Literature
-
-- Veda
-- Upanishad
-- Purana
-- Itihasa
-- Sutra
-- Shastra
-- Smrti
-- Darshana
-- Kavya
-- Katha
-- Bhagavat Gita
-
-Classification of Literation :
-- Veda Upanishad Sutra:
-  - Consit of 4Vedas Rig,Sama,...etc, Updanishad, Sutra: Patanjali, Panini,Jothisya etc,,
-  - Generally it is teached under Experienced scholars in Resident Schools 10-15;
-
-- Shastra Smrti Kavya
-  - Learnt as Special Subject by Scholar in their Curriculums.
-
-- Katha Shloka
-  - After learnning Language Basics you can yourself comprehend
-
-** Course :1
-*** Level 1
-
-Alphabets,
-Noun,Pronoun,
-Verb,
-Past, Present Tense,
-Gender,
-Number
-Sentence formation
-
-*** Level 2
-
-All 7 cases :
-Order/Request,
-Past and Future
-Tenses, Verb Root and Forms,
-Krt Word
-
-*** Level 3:
-
-All 7 cases of mostly used vowel ending words,
-Analyzing sentences in stories and Subhitam,
-Indeclinable;
-
-Conversatoins and construction of comples sentences with excercises
-
-** Course 2:
-
-*** Level 4
-
-Different Verb, \\
-Form of Ten \\
-Categories, Passive Voice, \\
-Adverb, Numerals, \\
-stories and subhashitam 
-
-*** Level 5
-
-Sandhi : Swara , Vyanjana , Visarga \\
-with examples and exercises
-
-Tips to decode shloka
-
-** Course 3:
-
-*** Level 7
-All 7 Cases of Nouns,\\
-adjective \\
-numerals, pronouns of all type words
-
-called as shabdamanjari
-
-*** Level 8
-Dhatumanjari - Verb Forms, root category, \\
-sarva-ardha-dhaduka tenses and moods formation 
+* [POS] Part Of Speech:
+- noun (नामपदम)
+  - gender (लिंग)
+    - male : Masculine (pum-linga)
+    - female: Femine  (stri-linga)
+    - neutral: Neuter (napumsaka-linga)
+  - plural
+    - eka-vacan
+    - dvi-vacan
+    - bahu-vacan        
+- pronoun (सर्वनाम)
+- Adjective(विशेषण)
+- Verb(क्रिया)
+  - puruṣa
+    - 1st Person : pratama Pursha
+    - 2nd Person : madhyama-purusha
+    - 3rd Person : uttama-pursha    
+ - pada
+   - parasmai-pada(an expression for another)
+   - ātmane-pada (an expression for oneself)  
+   - ubhaya-pada 
+- Adverb(क्रिया विशेषण)
+- Preposition(सम्बंधसूचक अव्यय)
+- Conjunction(समुच्यबोधक)
+- Interjection(विस्म्यादिभोदक)
 
 
-*** Level 9
 
-Chandamama Story analysis for sentence \\
-Construction and usage of tense, nouns, adjective adverb etc.
+** [dhātu,shabda, avyaya] Three basic parts of speech  
+soruce : https://sanskritdocuments.org/learning_tools/grammarintro_sa.html \\
+There are three basic parts of speech in sanskrit :
+- shabda (nouns/ pronouns/ adjectives/ participles),
+- dhātu(verbs), (indicated with a root symbol $\sqrt{\;\;}$)
+- avyaya (indeclinables: prepositions,conjunctions,adverbs, exclamations etc.)
 
-** Course 4 :
-*** Level 9
-Pancharantna Katha
+Here we shall discuss declentions of nouns .
+The form of a noun used in a sentence dependes on two things :
+- Its number, (singular,dual or plural) and
+- its vibhakti .
 
-*** Level 10:
-Subhashitam of Bhattahari
+The vibhakti to be used is governed by the role the noun plays in the sentence, \\
+- e.g . subject,object, instrument of action etc .
+Here is a brief explanation of vibhaktis along with an example :
+
+** Vibhaktis :
+source : https://sanskritdocuments.org/learning_tools/grammarintro_sa.html \\
+There are eight possible vibhaktis of a word . \\
+Of these, six relate to an action and hence are also  "kāraks" \\
+The other two ṣaṣṭhī(Possesive) and sambodhan(Denominative) do not necessarily associate with an action. \\
+The following table lists the vibhaktis and their meanings. \\
+
+| prathamā  | प्रथमा  | Nominative   | performer/subject                            |
+| dvitīyā   | द्वितीया | Accusative   | object                                        |
+| tr̥tīyā    | तृतीया  | Instrumental | instrument                                   |
+| caturthī  | चतुर्थी  | Dative       | for whom the action is performed              |
+| paṁcamī   | पंचमी  | Ablative     | from where the action is performed            |
+| ṣaṣṭhī    | षष्ठी   | Possesive    | not strictly a vibhakti, denotes possesi on   |
+| saptamī   | सप्तमी  | Locative     | location of the action                        |
+| sambodhan | सम्बोधन् | Denominative | used to address someone                       |
 
 
+file:../images/Screenshots_2023-11-19T09-40-13.png
+source: https://www.youtube.com/watch?v=H3_e2fccEdk
+
+ http://bhagavadgita.org.in/Blogs/5aa8b1d95369ed19b8f4131a \\
+X = $\frac{Words \;representing \;properties}{Words \;representing \;objects}$ = *Words representing properties : Words representing objects*
+-  For most languages:
+  - X < 1
+  - X $\approx$  1 (approx.)
+  - X  > 1 (slightly)
+- For Sanskrit:
+  - X $\approx$ 10^5 (Lakhs)
+
+dhātu [धातु] : root word \\
+A dhātu is a rudimentary verbal element form which words are derived: it is nuclcus to which other word fragments are added to form a whole word.
+
+
+#+begin_quote
+In Sanskrit there are 2012 dhAtus. 
+every word in sankrit end with vowel(svara स्वरा)
+#+end_quote 
+
+
+** Verbs
+
+
+A dhātu (indicated with a root symbol $\sqrt{\;\;}$) develops to form a stem (anga) and to the stem is added a pernonal ending (tin-vibhakti) to complete verb (kriya).
+https://sanskritdocuments.org/learning_tutorial_wikner/P009.html
+
+A dātu indicated with a surd or root symbol  $\sqrt{\;\;}$ before i) develops to form a stem a  (anga ) and to the stem is added a p ersonal ending (tiṅ-vibhakti ) to form a complete verb kriyā ).
+
+
+
+| prathama-puruṣa | tiṣṭhati | he /she /it stands |
+| madhyama-puruṣa | tiṣṭhasi | you stand          |
+| uttama-puruṣa   | tiṣṭhāmi | I stand            |
+
+
+pursha :
+- 1st Person : pratama Pursha
+- 2nd Person : madhyama-purusha
+- 3rd Person : uttama-pursha    
+
+* Sandhi
+There are there types of Sandhih
+- svara sandhih
+- vyanjana sandhih
+- visarga  sandhih
+
+  
+* News
+vipratiṣedhe paraṁ kāryam : Sanskrit Puzzle? or Cambridge's Conspiracy! | Rishi Rajpopat on Ashtadhyayi : \\
+https://www.youtube.com/watch?v=4-5EBsNOtKg&list=PLwij7LK8S1MOOfObcfIR5FWIZ-N4AR7Na&index=1
+
+
+* github OpenSource Projects
+
+
+
+
+https://github.com/gasyoun
+
+https://github.com/gasyoun?tab=repositories
+
+| Nagari                                                            | Public | Varnamala, ligatures, devanagari  5  2 GNU General Public License v3.0 Updated on Apr 5, 2021                                                     |
+| SanskritLexicography                                              | Public | Cologne headword lists  HTML  3 Updated on Jan 6, 2021                                                                                            |
+| MWderivations                                                     | Public | Forked from funderburkjim/MWderivations                                                                                                           |
+| Derivations of headwords in the Monier-Williams (1899) dictionary |        | HTML Updated on Dec 3, 2020                                                                                                                       |
+| ClickToQuote                                                      | Public | Forked from lidazaikova/ClickToQuote                                                                                                              |
+| Click-to-Quote with                                               |        | Variables JS  HTML MIT License Updated on Apr 21, 2020                                                                                            |
+| DeepPavlov                                                        | Public | Forked from deeppavlov/DeepPavlov                                                                                                                 |
+| Parallel-Sanskrit-Corpora                                         | Public | Parallel Sanskrit Corpora with European languages MIT License Updated on Nov 28, 2019                                                             |
+| gasyoun.github.io                                                 | Public | Creating Pages with the automatic generator HTML  3  1 Updated on Nov 22, 2016                                                                    |
+| ScharfSandhi Public                                               |        | Forked from funderburkjim/ScharfSandhi Software to apply sandhi to Sanskrit text   Python MIT License Updated on Sep 7, 2015                      |
+| SanskritSorting                                                   | Public | Forked from drdhaval2785/SanskritSorting Codes written by Dr. Dhaval Patel for Sanskrit Natural Language Programming  PHP Updated on May 19, 2015 |
+| SanskritMacros                                                    | Public | EmEditor, MS Excel, MS Word Sanskrit macros, scripts  R  1  1 Updated on Oct 25, 2014                                                             |
+| SanskritCorpora                                                   |        | Public Word by word translations  3 Updated on Oct 6, 2014                                                                                        |
+| sanskrit                                                          | Public | Forked from shreevatsa/sanskrit                                                                                                                   |
+| Sanskrit-related code                                             |        | data GNU General Public License v2.0 Updated on Aug 22, 2014                                                                                      |
+
+
+
+https://github.com/sanskrit-lexicon-scans/mw
+
+
+Dr. Dhaval Patel
+https://github.com/drdhaval2785?tab=repositories
+
+
+
+
+https://sanskritmedium.com/topics/emotions/
+
+
+https://github.com/orgs/sanskrit-lexicon-scans/repositories

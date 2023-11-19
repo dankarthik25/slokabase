@@ -54,6 +54,7 @@
     </div>
 {% endif %}
 
+{% if my_sloka_meta[0]['translation'] is not none %}
     <div style="text-align: center;">
         <h1 class="sloka-header">Translation</h2>
             <p class="translation-text">
@@ -62,4 +63,6 @@
                 {% endfor %}
             </p>
     </div>
-    {% endblock content %}
+{% endif %}
+
+{% endblock content %}
