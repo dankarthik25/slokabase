@@ -218,7 +218,3 @@ for sloka_no in range(1,total_no_verse+1):
 
 
 # In[ ]:
-
-
-
-

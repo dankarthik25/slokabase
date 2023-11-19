@@ -45,15 +45,20 @@ def add_reference2single_dict(db_name,data):
         # print()
         # print('Befor temp_line: ',temp_line)
         # print('temp_line :', temp_line)
+        # print(temp_line)
         ref_list = []
-        for ref in temp_line[1].split(','):
-            ref_dic = dict()   
-            # print(ref)
-            temp_short_name = ref.split('/')[0]
-            my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
-            ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
-            ref_list.append(ref_dic)
-        temp_line[1] = ref_list
+        if temp_line[1] is not None:
+            print("# # # temp line no:51 is None",temp_line)
+            for ref in temp_line[1].split(','):
+                ref_dic = dict()   
+                # print(ref)
+                temp_short_name = ref.split('/')[0]
+                my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
+                ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
+                ref_list.append(ref_dic)
+            temp_line[1] = ref_list
+        else:
+            temp_line[1] = [{'0/0': 'NoRef'}]
         # print('After temp_line : ',temp_line)
         # print()
         new_data.append(temp_line)
@@ -296,7 +301,11 @@ def search():
 #            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
         else: 
             data = add_reference2single_dict('slokabase.db',data)
+            # print("route search 300:", data)
             all_dict_data.append(data)
+    if len(all_dict_data) ==0:
+        # print('all_dict_data is empty for search q:',q,all_dict_data)
+        all_dict_data = [[q, [['No Meaning Found', [{'0/0': 'NoRef Found'}]]]]]
     return render_template('search.html',all_dict_data=all_dict_data)
 #    print(newlist)
 
