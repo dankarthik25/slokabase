@@ -20,11 +20,11 @@
 
     {% for song_part in song_meta%}
     <div style="margin-top:20px ; padding-top: 50px; border-top: #f5f5f5 solid 5px;">
-        <!-- <h1 class="sloka-title">
+        <h1 class="sloka-title">
             <a class="sloka-synonyms-key"
                 href="{{ url_for('lib') }}/{{info[0]['song_idx']}}/{{song_part['slokas_no']}}"> Text
                 {{song_part['song_name']}} | {{song_part['slokas_no']}} | </a>
-        </h1> -->
+        </h1>
         <p class="sloka-verser-eng">
             <i>
                 {% for eng_line in song_part['sloka_eng'] %}
