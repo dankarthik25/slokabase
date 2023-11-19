@@ -72,7 +72,7 @@ file:../images/Devanagari2IAST_v2.png
  - pada
    - parasmai-pada(an expression for another)
    - ātmane-pada (an expression for oneself)  
-   - ubhaya-pada 
+   - ubhaya-pada  
 - Adverb(क्रिया विशेषण)
 - Preposition(सम्बंधसूचक अव्यय)
 - Conjunction(समुच्यबोधक)
@@ -168,7 +168,8 @@ https://www.youtube.com/watch?v=4-5EBsNOtKg&list=PLwij7LK8S1MOOfObcfIR5FWIZ-N4AR
 
 
 * github OpenSource Projects
-
+NLP: Sankrit Steamming 
+https://github.com/s00rajsnair/sanstem/tree/main/sanstem
 
 
 

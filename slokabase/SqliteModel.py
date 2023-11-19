@@ -250,6 +250,34 @@ class SqliteModel():
         finally:
             self.db_cursor.close()
 
+    def custom_query(self,query):
+        # db_connect = self.db_connect
+        # db_cursor = db_connect.cursor()
+        db_cursor =self.db_connect.cursor()
+        # query = f"""UPDATE {self.table_name} SET synonyms= null WHERE song_idx={mysong_index};"""
+        try :
+            db_cursor.execute(query)
+            self.db_connect.commit()
+            # auto_increment and delete on cascade https://stackoverflow.com/questions/29037793/sqlite-integrityerror-unique-constraint-failed
+
+# TODO: If you want some return or output create your own custom_query function which will return the data
+#            data = db_cursor.fetchall()
+#            print(data)    
+            db_cursor.close()            
+        except sqlite3.Error as e:
+            print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info() 
+        
+        finally:
+            db_cursor.close()
+            print('Run custom query:{} \nSuccessful !'.format(query))
+
+
+
+
+
     def db_close(self):
         self.db_connect.close()
 
