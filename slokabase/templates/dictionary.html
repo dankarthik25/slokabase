@@ -1,11 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
 <br>
-Search : <input type="text" class="input" 
-                placeholder=" Sanskrit Word for Dictionary Search" 
-                name="q" size="40" style='height:3em'
+<div class="main-search-bar">
+    <img src="{{ url_for('static', filename='logo.png') }}" width="100px" style="margin-right:25px ;"   alt="SanskritArchive">
+    <div><form>
+          <div class="main-search">
+             <span class="main-search-icon material-symbols-outlined">
+                search
+             </span>
+             <!-- <input class="main-search-input" type="search" placeholder="Search   Books, Authors, Songs"> -->
+             <input class="main-search-input input" type="text" placeholder="Search  in Dictionary"  name="q" 
+             hx-get="/search" hx-trigger="keyup changed delay:500ms" 
+             hx-target="#results">
+
+          </div>
+       </form>
+    </div>
+ </div>
+
+<!-- Search : <input type="text" class="input" placeholder=" Sanskrit Word for Dictionary Search"  name="q" size="40" style='height:3em'
                 hx-get="/search" hx-trigger="keyup changed delay:500ms" 
-                hx-target="#results">
+                hx-target="#results"> -->
     <!-- asfadfadf -->
 <table >
 

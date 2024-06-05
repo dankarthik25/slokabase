@@ -1,4 +1,3 @@
-
 import os, sqlite3 
 import re
 from slokabase import app
@@ -454,13 +453,15 @@ def ppt(song_id):
 
 if __name__ == '__main__':
 
-    # app.run(debug=True)
+#    app.run(debug=True)
 
 #    with app.app_context():
 #        app.run(debug=True)
+
     from waitress import serve
     serve(app, host="0.0.0.0", port=8080)
 
+#
 # def add_reference2single_dict(db_name,data):
 #     db_path = os.path.join(os.getcwd(),db_name)
 #     SongIndex_sql = SqliteModel(db_path,'SongIndex')

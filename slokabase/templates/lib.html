@@ -1,27 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="content">
 
-<div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-bottom: 15px;">
-   <img src="{{ url_for('static', filename='logo.png') }}" alt="SanskritArchive" style="width:90px;">   
-    <!-- <a class="song-path" href="{{ url_for('home') }}"> Home</a>  -->
+<div class="main-search-bar">
+   <img src="{{ url_for('static', filename='logo.png') }}" width="100px" style="margin-right:25px ;"   alt="SanskritArchive">
+   <div>
+      <br>
+      <form>
+         <div class="main-search">
+            <span class="main-search-icon material-symbols-outlined">
+               search
+            </span>
+            <input class="main-search-input" type="search" placeholder="Search   Books, Authors, Songs">
+         </div>
+      </form>
    </div>
-<div>  
-
-<!-- Song Search : <input type="text" class="input" placeholder="Enter Song to  Search" name="ssearch" size="40" style='height:2em'
-            hx-get="/songsearch" hx-trigger="keyup changed delay:500ms" hx-target="#songresults">
-<div id="songresults">   
-</div> -->
-
-<br>
-
-<h1 style="margin-bottom: 5px;">   List of Song in Library </h1>
+</div>
+<div style="margin: 20px;">
+   <h1 style="margin-bottom: 5px;font-size: 1.5rem;">   Library </h1>
 {% for song_meta in song_list%}
 <!-- {{song_meta['song_idx']}} <a href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> ({{song_meta['song_short_name']}}) <br>   -->
  <!-- {{song_meta}} <br> -->
 
  <div class="song-header" >
-    <a class="song-header-anchor" href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> <br>  
+    <a class="song-header-anchor" href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> <br>
  </div>
  {% endfor %}
 </div>
