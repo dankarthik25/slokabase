@@ -51,9 +51,9 @@
                 {% endfor %}
         </p>
     </div> 
- {% endif %}
+    {% endif %}
 
-
+    {% if song_part['translation'] is not none %}
     <div style="text-align: center; padding-bottom: 20px; margin-bottom:20px ;">
         <h1 class="sloka-header">Translation</h1>
         <p class="translation-text">
@@ -62,6 +62,7 @@
         {% endfor %}
         </p>
     </div>
+    {% endif %}
     <!-- {{song_part}} -->
     {% endfor %}
 

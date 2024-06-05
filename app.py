@@ -1,3 +1,4 @@
+
 import os, sqlite3 
 import re
 from slokabase import app
@@ -16,6 +17,7 @@ db_name = 'slokabase.db'
 # db_name = 'slokabase_new.db'
 db_path = os.path.join(os.getcwd(),db_name)
 
+# Already defined in AddDictoinary.ipynb :NEED TO MOVE 
 def get_single_dic(db_name,dic_word):
     db_name = 'dictionary.db'
     # dic_word = 'tomāra'
@@ -27,9 +29,10 @@ def get_single_dic(db_name,dic_word):
     query = f"""select word, meaning_value,reference from DictMeaning  where word='{dic_word.strip()}' ORDER BY word, meaning_value ASC;"""
     db_cursor.execute(query)
     data = db_cursor.fetchall()
+    # print("# get_single_dic \t",data)
     db_cursor.close()
     return data
-
+# Already defined in AddDictoinary.ipynb :NEED TO MOVE 
 def add_reference2single_dict(db_name,data):
     db_path = os.path.join(os.getcwd(),db_name)
     SongIndex_sql = SqliteModel(db_path,'SongIndex')
@@ -43,11 +46,11 @@ def add_reference2single_dict(db_name,data):
         del temp_line[0]
         # print()
         # print('Befor temp_line: ',temp_line)
-        # print('temp_line :', temp_line)
-        # print(temp_line)
+        # print('# temp_line :', temp_line) 
+                    # temp_line : ['Complete, Whole', 'AnnapoornaStotram/1,SriVenkatesaSuprabhatam/13']
+                    # temp_line : ['Without a gap, Complete, Whole', None]
         ref_list = []
-        if temp_line[1] is not None:
-            print("# # # temp line no:51 is None",temp_line)
+        if temp_line[1] is not None: # if temp_line[1] is None below for loop fail so put some dummy value
             for ref in temp_line[1].split(','):
                 ref_dic = dict()   
                 # print(ref)
@@ -56,8 +59,9 @@ def add_reference2single_dict(db_name,data):
                 ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
                 ref_list.append(ref_dic)
             temp_line[1] = ref_list
+            # print('#ref_list',ref_list)
         else:
-            temp_line[1] = [{'0/0': 'NoRef'}]
+            temp_line[1]=[{'0/0': 'No Ref'}]
         # print('After temp_line : ',temp_line)
         # print()
         new_data.append(temp_line)
@@ -65,6 +69,7 @@ def add_reference2single_dict(db_name,data):
     # new_data.insert(0,dict_word)
     return data
 
+# Already defined in AddDictoinary.ipynb :NEED TO MOVE 
 def get_all_dict_words(db_name):
     db_path = os.path.join(os.getcwd(),db_name)
     db_connect = sqlite3.connect(db_path)
@@ -208,7 +213,7 @@ def submitaddnewsong():
 
 @app.route("/dictionary")
 def dictionary():
-    # all_dict_word =get_all_dict_words('dictionary.db')
+    all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []
 #    for dic_word in all_dict_word:
 #        # dic_word = 'tomāra'
@@ -291,6 +296,7 @@ def search():
 #    print(q)
     r = re.compile(q)
     match_words = list(filter(r.match, all_dict_word)) # Read Note below
+    # print('# match_words',match_words)
     for match_word in match_words:
         data = get_single_dic('dictionary.db',match_word)
         # print(data)
@@ -300,11 +306,10 @@ def search():
 #            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
         else: 
             data = add_reference2single_dict('slokabase.db',data)
-            # print("route search 300:", data)
             all_dict_data.append(data)
+    # print('# all dict data: ',all_dict_data)
     if len(all_dict_data) ==0:
-        # print('all_dict_data is empty for search q:',q,all_dict_data)
-        all_dict_data = [[q, [['No Meaning Found', [{'0/0': 'NoRef Found'}]]]]]
+        all_dict_data= [[q, [['Math Not Found', [{'0/0': 'No Ref'}]]]]]
     return render_template('search.html',all_dict_data=all_dict_data)
 #    print(newlist)
 
@@ -460,23 +465,17 @@ def ppt(song_id):
 #     pass
 
 
-if __name__ == '__main__':
-
-#    app.run(debug=True)
-
+# if __name__ == '__main__':
+    # app.run(debug=True)
 #    with app.app_context():
 #        app.run(debug=True)
 
-    # from waitress import serve
-    # serve(app, host="0.0.0.0", port=8080)
-    with app.app_context():
-        app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
 #    from waitress import serve
 #    serve(app, host="0.0.0.0", port=8080)
 
-
-
-#
 # def add_reference2single_dict(db_name,data):
 #     db_path = os.path.join(os.getcwd(),db_name)
 #     SongIndex_sql = SqliteModel(db_path,'SongIndex')

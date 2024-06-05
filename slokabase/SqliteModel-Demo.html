@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>01_Class_SqliteModel</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>SqliteModel-Class</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7480,7 +7480,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_insert_query</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -7493,6 +7493,8 @@ a.anchor-link {
     
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="c1"># type(value) == 'str': </span>
+            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span><span class="s1">'‘'</span><span class="p">)</span> <span class="c1"># remove any confusion in query you can re-cover the data when read query replace with ' or "</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'"'</span><span class="p">,</span><span class="s1">'“'</span><span class="p">)</span> <span class="c1"># remove any confusion in query           </span>
             <span class="n">Entry_Value</span> <span class="o">=</span> <span class="n">Entry_Value</span> <span class="o">+</span> <span class="s2">"""'</span><span class="si">{}</span><span class="s2">'</span><span class="si">{}</span><span class="s2">"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">),</span><span class="n">comma</span><span class="p">)</span>    
         <span class="k">else</span><span class="p">:</span>
             <span class="n">Entry_Value</span> <span class="o">=</span> <span class="n">Entry_Value</span> <span class="o">+</span> <span class="s2">"""</span><span class="si">{}{}</span><span class="s2">"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">),</span><span class="n">comma</span><span class="p">)</span>    
@@ -7515,7 +7517,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get_insert_query(&lt;TABLE-NAME&gt; ,&lt;COLUMN-NAME&gt; = &lt;COLUMN-VALUE&gt;,&lt;COLUMN-NAME&gt; = &lt;COLUMN-VALUE&gt; , &lt;COLUMN-NAME&gt; = &lt;COLUMN-VALUE&gt;, )</span>
@@ -7530,7 +7532,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>"INSERT INTO Song_Index (song_name, song_short_name, sloka_statues) VALUES ('Nector of Instruction', 'noi', 1);"</pre>
 </div>
@@ -7542,7 +7544,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_read_query</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -7577,7 +7579,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get_read_query(&lt;TABLE-NAME&gt; ,</span>
@@ -7610,7 +7612,7 @@ get_read_query: SELECT song_idx, slokas_no, sloka_hindi, slokas_id, sloka_eng FR
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>'SELECT song_idx, slokas_no, sloka_hindi, slokas_id, sloka_eng FROM mySong WHERE  song_idx=4 and  slokas_id=1;'</pre>
 </div>
@@ -7622,7 +7624,7 @@ get_read_query: SELECT song_idx, slokas_no, sloka_hindi, slokas_id, sloka_eng FR
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_update_query</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -7671,7 +7673,7 @@ get_read_query: SELECT song_idx, slokas_no, sloka_hindi, slokas_id, sloka_eng FR
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">get_update_query</span><span class="p">(</span><span class="s1">'store'</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="s1">'indian mango'</span><span class="p">)</span>
@@ -7696,7 +7698,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>'UPDATE store SET  quantity=10,   price=15 WHERE item=10'</pre>
 </div>
@@ -7708,7 +7710,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_create_table_query</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -7733,7 +7735,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">get_create_table_query</span><span class="p">(</span><span class="s1">'Songs'</span><span class="p">,</span> <span class="n">song_idx</span><span class="o">=</span><span class="s1">'INTEGER'</span><span class="p">,</span> 
@@ -7762,7 +7764,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>'CREATE TABLE IF NOT EXISTS Songs (song_idx INTEGER, slokas_no INTEGER NOT NULL, sloka_hindi TEXT, sloka_eng TEXT, synonyms TEXT, translation TEXT, purpot TEXT, FOREIGN KEY (song_idx) REFERENCES SongIndex(song_idx), PRIMARY  KEY (song_idx, slokas_no));'</pre>
 </div>
@@ -7774,7 +7776,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_delete_query</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -7801,7 +7803,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">get_delete_query</span><span class="p">(</span><span class="s1">'Song'</span><span class="p">,</span> <span class="n">song_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">sloka_no</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
@@ -7816,7 +7818,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>'DELETE FROM Song WHERE song_idx=1 and sloka_no=5;'</pre>
 </div>
@@ -7828,7 +7830,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -7941,6 +7943,30 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
     <span class="k">def</span> <span class="nf">db_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db_connect</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
+    <span class="k">def</span> <span class="nf">custom_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">query</span><span class="p">):</span>
+        <span class="c1"># db_connect = self.db_connect</span>
+        <span class="c1"># db_cursor = db_connect.cursor()</span>
+        <span class="n">db_cursor</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">db_connect</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="c1"># query = f"""UPDATE {self.table_name} SET synonyms= null WHERE song_idx={mysong_index};"""</span>
+        <span class="k">try</span> <span class="p">:</span>
+            <span class="n">db_cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db_connect</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="c1"># auto_increment and delete on cascade https://stackoverflow.com/questions/29037793/sqlite-integrityerror-unique-constraint-failed</span>
+
+            <span class="c1"># self.db_connect.close()</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">db_cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>    
+            <span class="n">db_cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>            
+        <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'SQLite error: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">er</span><span class="o">.</span><span class="n">args</span><span class="p">)))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Exception class is: "</span><span class="p">,</span> <span class="n">er</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'SQLite traceback: '</span><span class="p">)</span>
+            <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span> 
+        
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">db_cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Run custom query:</span><span class="si">{}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">Successful !'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+
     
     
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span> <span class="bp">self</span><span class="p">):</span>
@@ -7956,15 +7982,22 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sqlite3</span> 
+<span class="c1"># db_name = 'slokabase.db'</span>
+<span class="c1"># db_path = os.path.join(os.getcwd(),db_name)</span>
+<span class="c1"># table_name = 'temp'</span>
+<span class="c1"># print(db_path)</span>
 
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sqlite3</span> 
+<span class="c1"># db_name = 'slokabase_10.db'</span>
 <span class="n">db_name</span> <span class="o">=</span> <span class="s1">'slokabase.db'</span>
 <span class="n">db_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span><span class="n">db_name</span><span class="p">)</span>
-<span class="n">table_name</span> <span class="o">=</span> <span class="s1">'temp'</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
+<span class="c1"># SongIndex_sql = Model(db_path,'SongIndex')</span>
+<span class="n">mySongs_sql</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span><span class="s1">'Songs'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7977,7 +8010,7 @@ UPDATE store SET  quantity=10,   price=15 WHERE item=10
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/media/karthik/myVolume/workspace/workspae_vedabase/slokabase.db
+<pre>/media/karthik/myVolume/workspace/workspace_vedabase/slokabase/slokabase.db
 </pre>
 </div>
 </div>
@@ -8722,7 +8755,18 @@ SELECT * FROM Songs WHERE  song_idx=2 and  slokas_no=1;
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5d1b9a6b-f0e6-4aef-994e-c19cc9336fb4">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3f384f5f-984a-46d0-a45e-24e2f2715c20">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Custom-Query">Custom Query<a class="anchor-link" href="#Custom-Query">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=09d1c311-84fb-400d-a65c-5adfecf86135">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8730,7 +8774,95 @@ SELECT * FROM Songs WHERE  song_idx=2 and  slokas_no=1;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mysong_index</span> <span class="o">=</span><span class="mi">81</span>
+<span class="c1"># Below code will not work so : </span>
+<span class="c1"># mySongs_sql.update_entry(*['song_idx'], synonyms='NULL',song_idx=mysong_index) # delete all verse or sloka</span>
+
+
+<span class="c1"># mySongs_sql</span>
+<span class="c1"># db_connect = sqlite3.connect(self.db_path)</span>
+<span class="n">db_connect</span> <span class="o">=</span> <span class="n">mySongs_sql</span><span class="o">.</span><span class="n">db_connect</span>
+<span class="n">db_cursor</span> <span class="o">=</span> <span class="n">db_connect</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="c1"># query = f"""UPDATE {mySongs_sql.table_name} SET synonyms= null WHERE song_idx={mysong_index};"""</span>
+<span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""UPDATE </span><span class="si">{</span><span class="n">mySongs_sql</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> SET translation= null WHERE song_idx=</span><span class="si">{</span><span class="n">mysong_index</span><span class="si">}</span><span class="s2">;"""</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">db_cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">db_connect</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">db_cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">db_cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># UPDATE Songs SET translation= null WHERE song_idx=81;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=79e69ee9-d375-4cd7-88c7-035b9efe21bd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mysong_idx</span><span class="o">=</span><span class="mi">73</span>
+<span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""UPDATE </span><span class="si">{</span><span class="n">mySongs_sql</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> SET synonyms= null WHERE song_idx=</span><span class="si">{</span><span class="n">mysong_idx</span><span class="si">}</span><span class="s2">;"""</span>
+<span class="c1"># query = f"""UPDATE {mySongs_sql.table_name} SET translation= null WHERE song_idx={mysong_index};"""</span>
+<span class="c1"># query  = f"""SELECT synonyms FROM {mySongs_sql.table_name} WHERE  song_idx={mysong_idx};"""</span>
+<span class="c1"># Added the function to the Model</span>
+<span class="n">mySongs_sql</span><span class="o">.</span><span class="n">custom_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[]
+Run custom query:UPDATE Songs SET synonyms= null WHERE song_idx=73; 
+Successful !
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3594541e-e5b4-49d4-aa03-1928ba874260">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">custom_quer</span><span class="p">(</span><span class="n">mySongs_sql</span><span class="p">,</span><span class="n">query</span><span class="p">):</span>
+    <span class="n">db_connect</span> <span class="o">=</span> <span class="n">mySongs_sql</span><span class="o">.</span><span class="n">db_connect</span>
+    <span class="n">db_cursor</span> <span class="o">=</span> <span class="n">db_connect</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="c1"># query = f"""UPDATE {mySongs_sql.table_name} SET synonyms= null WHERE song_idx={mysong_index};"""</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""UPDATE </span><span class="si">{</span><span class="n">mySongs_sql</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> SET translation= null WHERE song_idx=</span><span class="si">{</span><span class="n">mysong_index</span><span class="si">}</span><span class="s2">;"""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">db_cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">try</span> <span class="p">:</span>
+        <span class="o">.</span><span class="n">db_cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">mySongs_sql</span><span class="o">.</span><span class="n">db_connect</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="c1"># auto_increment and delete on cascade https://stackoverflow.com/questions/29037793/sqlite-integrityerror-unique-constraint-failed</span>
+        <span class="n">mySongs_sql</span><span class="o">.</span><span class="n">db_cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># mySongs_sql.db_connect.close()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">db_cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>    
+    <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'SQLite error: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">er</span><span class="o">.</span><span class="n">args</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Exception class is: "</span><span class="p">,</span> <span class="n">er</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'SQLite traceback: '</span><span class="p">)</span>
+        <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span> 
+    
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">mySongs_sql</span><span class="o">.</span><span class="n">db_cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Run custom query:</span><span class="si">{}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">Successful !'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

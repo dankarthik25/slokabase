@@ -25,10 +25,10 @@
         <nav>
           <div class="nav-left">
           <ul>
-            <!-- slokabase/static/underdevelopement.html -->
-            <!-- "{{ url_for('static', filename='underdevelopement.html') }}" -->
+
             <li>  <img src="{{ url_for('static', filename='logo.png') }}" alt="Girl in a jacket" style="width:30px;"> </li>          
             <li><a href="{{url_for('home')}}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('static', filename='SankritTutorial.html') }}" class="nav-link">Learn Sanskrit</a></li>            
             <li><a href="{{url_for('dictionary')}}" class="nav-link">Dictionary</a></li>     
             <li><a href="{{url_for('hindi2eng')}}" class="nav-link">hindi2IAST</a></li>                        
             <li><a href="{{url_for('addNewSong')}}" class="nav-link">AddSong</a></li>                                    
@@ -37,7 +37,6 @@
           </div>
           <div class="nav-right"> 
             <ul> 
-            <!-- <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Learn Slokas</a></li> -->
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Books</a></li>
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Classical Music</a></li>
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">SahityaKala</a></li>

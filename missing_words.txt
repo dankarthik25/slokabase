@@ -1,0 +1,4 @@
+song_idx:77, sloka no:16, line no:1, word:śrīrāvaṇakr̥taṁ
+song_idx:77, sloka no:16, line no:1, word:śivatāṇḍava
+song_idx:77, sloka no:16, line no:1, word:stotraṁ
+song_idx:77, sloka no:16, line no:1, word:sampūrṇam

@@ -40,6 +40,7 @@ def get_insert_query(table_name,**kwargs):
     Entry_Value = Entry_Value.rstrip(comma)
 
     query = """INSERT INTO {} ({}) VALUES ({});""".format(table_name,Entry_Field, Entry_Value)        
+#    print(query)
     return query
 
 # get_insert_query('Song_Index' ,song_name = 'Nector of Instruction', song_short_name ='noi', sloka_statues=1)
@@ -56,16 +57,19 @@ def get_read_query(table_name, *args, **kwargs):
         cond_query=''
         for key, value in kwargs.items():
             if isinstance(value, str): # type(value) == 'str': 
-                cond_query =  """{} {}='{}'{} """.format(cond_query, key,kwargs[key],' and')
+                value=value.replace("'",'‘') # remove any confusion in query you can re-cover the data when read query replace with ' or "
+                value=value.replace('"','“') # remove any confusion in query           
+
+                cond_query =  """{} {}='{}'{} """.format(cond_query, key,value,' and')
             else:
-                cond_query =  """{} {}={}{} """.format(cond_query, key,kwargs[key],' and')                
+                cond_query =  """{} {}={}{} """.format(cond_query, key,value,' and')                
         cond_query = cond_query.rstrip(' and') 
         query = query + ' WHERE ' + cond_query + ';'
     else:
         query += ';' 
 
 
-    # print('get_read_query:' ,query)
+#    print('get_read_query:' ,query)
     return query
 
 # get_read_query('temp' )  # >>> SELECT * FROM temp;
@@ -110,7 +114,7 @@ def get_update_query(table_name, *args, **kwargs):
     query = query.rstrip(comma) 
     
     query += cond_query
-    
+#    print(query)
     return query
     
 # get_update_query('store', quantity=10, price=15, item='indian mango')
@@ -190,7 +194,7 @@ class SqliteModel():
     def read_entry(self, *args, **kwargs):
         # query = "SELECT * FROM {};".format(self.table_name)
         query = get_read_query(self.table_name, *args,**kwargs)
-        # print(query)
+#        print(query)
         self.db_cursor = self.db_connect.cursor()
         try :
             self.db_cursor.execute(query)
@@ -210,7 +214,7 @@ class SqliteModel():
     def update_entry(self,*args, **kwargs):
         query = get_update_query(self.table_name,*args,**kwargs)
         self.db_cursor = self.db_connect.cursor()
-        #print(query)
+        # print(query)
         try :
             self.db_cursor.execute(query)        
             self.db_connect.commit()
@@ -245,6 +249,34 @@ class SqliteModel():
 
         finally:
             self.db_cursor.close()
+
+    def custom_query(self,query):
+        # db_connect = self.db_connect
+        # db_cursor = db_connect.cursor()
+        db_cursor =self.db_connect.cursor()
+        # query = f"""UPDATE {self.table_name} SET synonyms= null WHERE song_idx={mysong_index};"""
+        try :
+            db_cursor.execute(query)
+            self.db_connect.commit()
+            # auto_increment and delete on cascade https://stackoverflow.com/questions/29037793/sqlite-integrityerror-unique-constraint-failed
+
+# TODO: If you want some return or output create your own custom_query function which will return the data
+#            data = db_cursor.fetchall()
+#            print(data)    
+            db_cursor.close()            
+        except sqlite3.Error as e:
+            print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info() 
+        
+        finally:
+            db_cursor.close()
+            print('Run custom query:{} \nSuccessful !'.format(query))
+
+
+
+
 
     def db_close(self):
         self.db_connect.close()
