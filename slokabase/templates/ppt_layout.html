@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">  
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mytheme.css') }}">
+  <!-- HTMX script -->
+  <script src="https://unpkg.com/htmx.org@1.9.4"></script>   
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>SanskritArchive</title>
+  {% endif %}
+</head>
+
+<body>
+  <main role="main" class="">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

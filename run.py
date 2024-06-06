@@ -452,12 +452,28 @@ def ppt(song_id):
     for my_sloka in my_song:
         if my_sloka['sloka_eng'] !=None: 
             my_sloka['sloka_eng']   = my_sloka['sloka_eng'].split('\n')
-        if my_sloka['translation'] !=None:    
+        my_sloka['synonyms'] = get_linewise_synonym(my_sloka)
+        if my_sloka['translation'] !=None:
             my_sloka['translation'] = my_sloka['translation'].split('\n')
-
-
     return render_template('ppt.html', song_meta=my_song, info=mysong_metadata)
-#     pass
+
+@app.route('/ppt/<int:song_id>/<int:sloka_id>')
+def ppt_sloka(song_id,sloka_id):
+    mySongs_sql = SqliteModel(db_path,'Songs')
+    my_sloka = mySongs_sql.read_entry(song_idx=song_id, slokas_no=sloka_id)
+
+    if my_sloka[0]['sloka_eng'] !=None: 
+        my_sloka[0]['sloka_eng']   = my_sloka[0]['sloka_eng'].split('\n')
+    synonym_list = get_linewise_synonym(my_sloka[0])
+
+    if my_sloka[0]['translation'] !=None:    
+        my_sloka[0]['translation'] = my_sloka[0]['translation'].split('\n')
+    SongIndex_sql = SqliteModel(db_path,'SongIndex')
+    song_metadata = SongIndex_sql.read_entry( *['song_name','song_short_name'] ,song_idx=song_id)
+    my_sloka[0]['song_short_name'] = song_metadata[0]['song_short_name']
+    my_sloka[0]['song_name'] = song_metadata[0]['song_name']     
+    return render_template('ppt_sloka.html', my_sloka_meta=my_sloka, linewise_synonym = synonym_list, song_id=song_id)
+
 
 
 if __name__ == '__main__':
