@@ -283,9 +283,9 @@ def submit_hindi2eng():
     return output_text
 
 
-@app.route("/search")
+@app.route("/dictSearchRoute")
 def search():
-    q = request.args.get("q")
+    q = request.args.get("dictSearch")
     all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []    
 #    print(q)
@@ -305,7 +305,7 @@ def search():
     if len(all_dict_data) ==0:
         # print('all_dict_data is empty for search q:',q,all_dict_data)
         all_dict_data = [[q, [['No Meaning Found', [{'0/0': 'NoRef Found'}]]]]]
-    return render_template('search.html',all_dict_data=all_dict_data)
+    return render_template('dictSearch.html',all_dict_data=all_dict_data)
 #    print(newlist)
 
 @app.route("/lib")
