@@ -1,0 +1,5 @@
+*.pyc
+*.org~
+*.org#
+.ipynb_checkpoints/
+__pycache__/
