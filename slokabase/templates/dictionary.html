@@ -8,26 +8,24 @@
              <span class="main-search-icon material-symbols-outlined">
                 search
              </span>
-             <!-- <input class="main-search-input" type="search" placeholder="Search   Books, Authors, Songs"> -->
-             <input class="main-search-input input" type="text" placeholder="Search  in Dictionary"  name="q" 
-             hx-get="/search" hx-trigger="keyup changed delay:500ms" 
-             hx-target="#results">
+             <input class="main-search-input input" type="text" placeholder="Search  in Dictionary"  name="dictSearch" 
+             hx-get="/dictSearchRoute" hx-trigger="keyup changed delay:500ms" 
+             hx-target="#dictSearchResults">
 
           </div>
        </form>
     </div>
  </div>
 
-<!-- Search : <input type="text" class="input" placeholder=" Sanskrit Word for Dictionary Search"  name="q" size="40" style='height:3em'
-                hx-get="/search" hx-trigger="keyup changed delay:500ms" 
-                hx-target="#results"> -->
-    <!-- asfadfadf -->
+
 <table >
 
-    <tbody id="results">
+    <tbody id="dictSearchResults">
 
     </tbody>
     </table>    
+{% endblock content %}
+
 <!-- <table>
 {% for data in all_dict_data %}
     <tr>
@@ -50,4 +48,3 @@
     {% endfor %}              
 {% endfor %}          
 </table>     -->
-{% endblock content %}
