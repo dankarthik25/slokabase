@@ -1,0 +1,10 @@
+- TODO: replace : hindi2isat function in app.py with https://pypi.org/project/IastFramework/
+
+    app.py/@app.route("/submit_hindi2eng")/ def submit_hindi2eng():
+
+
+- TODO: Dict search is showing error or searchs [ "r", "ra", ....etc] 
+
+- Add songs : kalyāṇavṛṣṭistavaḥ, https://greenmesg.org/stotras/lakshmi/kanakadhara_stotram.php ref : TODO_NEXTSloka
+
+

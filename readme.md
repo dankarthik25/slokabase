@@ -12,7 +12,7 @@ conda activate vedabase
 
 
 # method 2
-python run.py # To run the code       : To view existing songs but not for adding new songs
+python app.py # To run the code       : To view existing songs but not for adding new songs
 
 # conda env export --no-builds > environment.yml # to export env 
 
@@ -23,6 +23,18 @@ conda activate vedabase
 # method 1
 
 flask run
+
+# docker image build (Note: DOCKERFILE file should exist in current folder)
+docker build --tag slokabase_img .
+docker run -itd --name sloka_con -p 5000:5000 slokabase_img 
+
+# open current dir in terminal  cd host/myVolume/update_vbase/slokabase
+
+docker run -it --name sloka_con -v ./database:/app/database -p 5000:5000 slokabase_img 
+# OR 
+docker run -it --name sloka_con -v /media/karthik/myVolume/update_vbase/slokabase/database:/app/database -p 5000:5000 slokabase_img 
+
+# For storing new song in pc/ or Presistanc volume on file 
 
 
 ```

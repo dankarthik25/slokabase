@@ -1,4 +1,3 @@
-
 import os, sqlite3 
 import re
 from slokabase import app
@@ -15,26 +14,27 @@ from slokabase.SqliteModel import SqliteModel
 # db_name = 'slokabase_10.db'
 db_name = 'slokabase.db'
 # db_name = 'slokabase_new.db'
-db_path = os.path.join(os.getcwd(),db_name)
+db_path = os.path.join(os.getcwd(),'database',db_name)
+# db_path = os.path.join(os.getcwd(),db_name)
 
-# Already defined in AddDictoinary.ipynb :NEED TO MOVE 
 def get_single_dic(db_name,dic_word):
     db_name = 'dictionary.db'
     # dic_word = 'tomāra'
     # dic_word = 'kṛṣṇa'
-    db_path = os.path.join(os.getcwd(),db_name)
+    # db_path = os.path.join(os.getcwd(),db_name)
+    db_path = os.path.join(os.getcwd(),'database',db_name)
 
     db_connect = sqlite3.connect(db_path)
     db_cursor = db_connect.cursor()
     query = f"""select word, meaning_value,reference from DictMeaning  where word='{dic_word.strip()}' ORDER BY word, meaning_value ASC;"""
     db_cursor.execute(query)
     data = db_cursor.fetchall()
-    # print("# get_single_dic \t",data)
     db_cursor.close()
     return data
-# Already defined in AddDictoinary.ipynb :NEED TO MOVE 
+
 def add_reference2single_dict(db_name,data):
-    db_path = os.path.join(os.getcwd(),db_name)
+    db_path = os.path.join(os.getcwd(),'database',db_name)
+    # print(db_path)
     SongIndex_sql = SqliteModel(db_path,'SongIndex')
     dict_word = data[0][0]
     
@@ -46,11 +46,11 @@ def add_reference2single_dict(db_name,data):
         del temp_line[0]
         # print()
         # print('Befor temp_line: ',temp_line)
-        # print('# temp_line :', temp_line) 
-                    # temp_line : ['Complete, Whole', 'AnnapoornaStotram/1,SriVenkatesaSuprabhatam/13']
-                    # temp_line : ['Without a gap, Complete, Whole', None]
+        # print('temp_line :', temp_line)
+        # print(temp_line)
         ref_list = []
-        if temp_line[1] is not None: # if temp_line[1] is None below for loop fail so put some dummy value
+        if temp_line[1] is not None:
+            print("# # # temp line no:51 is None",temp_line)
             for ref in temp_line[1].split(','):
                 ref_dic = dict()   
                 # print(ref)
@@ -59,9 +59,8 @@ def add_reference2single_dict(db_name,data):
                 ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
                 ref_list.append(ref_dic)
             temp_line[1] = ref_list
-            # print('#ref_list',ref_list)
         else:
-            temp_line[1]=[{'0/0': 'No Ref'}]
+            temp_line[1] = [{'0/0': 'NoRef'}]
         # print('After temp_line : ',temp_line)
         # print()
         new_data.append(temp_line)
@@ -69,9 +68,8 @@ def add_reference2single_dict(db_name,data):
     # new_data.insert(0,dict_word)
     return data
 
-# Already defined in AddDictoinary.ipynb :NEED TO MOVE 
 def get_all_dict_words(db_name):
-    db_path = os.path.join(os.getcwd(),db_name)
+    db_path = os.path.join(os.getcwd(),'database',db_name)
     db_connect = sqlite3.connect(db_path)
     db_cursor = db_connect.cursor()
     # query = f"""select word, meaning_value,reference from DictMeaning  where word='{dic_word}' ORDER BY word, meaning_value ASC;"""
@@ -213,7 +211,7 @@ def submitaddnewsong():
 
 @app.route("/dictionary")
 def dictionary():
-    all_dict_word =get_all_dict_words('dictionary.db')
+    # all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []
 #    for dic_word in all_dict_word:
 #        # dic_word = 'tomāra'
@@ -288,15 +286,14 @@ def submit_hindi2eng():
     return output_text
 
 
-@app.route("/search")
+@app.route("/dictSearchRoute")
 def search():
-    q = request.args.get("q")
+    q = request.args.get("dictSearch")
     all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []    
 #    print(q)
     r = re.compile(q)
     match_words = list(filter(r.match, all_dict_word)) # Read Note below
-    # print('# match_words',match_words)
     for match_word in match_words:
         data = get_single_dic('dictionary.db',match_word)
         # print(data)
@@ -306,11 +303,12 @@ def search():
 #            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
         else: 
             data = add_reference2single_dict('slokabase.db',data)
+            # print("route search 300:", data)
             all_dict_data.append(data)
-    # print('# all dict data: ',all_dict_data)
     if len(all_dict_data) ==0:
-        all_dict_data= [[q, [['Math Not Found', [{'0/0': 'No Ref'}]]]]]
-    return render_template('search.html',all_dict_data=all_dict_data)
+        # print('all_dict_data is empty for search q:',q,all_dict_data)
+        all_dict_data = [[q, [['No Meaning Found', [{'0/0': 'NoRef Found'}]]]]]
+    return render_template('dictSearch.html',all_dict_data=all_dict_data)
 #    print(newlist)
 
 @app.route("/lib")
@@ -457,25 +455,47 @@ def ppt(song_id):
     for my_sloka in my_song:
         if my_sloka['sloka_eng'] !=None: 
             my_sloka['sloka_eng']   = my_sloka['sloka_eng'].split('\n')
-        if my_sloka['translation'] !=None:    
+        my_sloka['synonyms'] = get_linewise_synonym(my_sloka)
+        if my_sloka['translation'] !=None:
             my_sloka['translation'] = my_sloka['translation'].split('\n')
-
-
     return render_template('ppt.html', song_meta=my_song, info=mysong_metadata)
-#     pass
+
+@app.route('/ppt/<int:song_id>/<int:sloka_id>')
+def ppt_sloka(song_id,sloka_id):
+    mySongs_sql = SqliteModel(db_path,'Songs')
+    my_sloka = mySongs_sql.read_entry(song_idx=song_id, slokas_no=sloka_id)
+
+    if my_sloka[0]['sloka_eng'] !=None: 
+        my_sloka[0]['sloka_eng']   = my_sloka[0]['sloka_eng'].split('\n')
+    synonym_list = get_linewise_synonym(my_sloka[0])
+
+    if my_sloka[0]['translation'] !=None:    
+        my_sloka[0]['translation'] = my_sloka[0]['translation'].split('\n')
+    SongIndex_sql = SqliteModel(db_path,'SongIndex')
+    song_metadata = SongIndex_sql.read_entry( *['song_name','song_short_name'] ,song_idx=song_id)
+    my_sloka[0]['song_short_name'] = song_metadata[0]['song_short_name']
+    my_sloka[0]['song_name'] = song_metadata[0]['song_name']     
+    return render_template('ppt_sloka.html', my_sloka_meta=my_sloka, linewise_synonym = synonym_list, song_id=song_id)
 
 
-# if __name__ == '__main__':
-    # app.run(debug=True)
+
+if __name__ == '__main__':
+
+#    app.run(debug=True)
+
 #    with app.app_context():
 #        app.run(debug=True)
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
-
+    # from waitress import serve
+    # serve(app, host="0.0.0.0", port=8080)
+    with app.app_context():
+        app.run(debug=True)
 #    from waitress import serve
 #    serve(app, host="0.0.0.0", port=8080)
 
+
+
+#
 # def add_reference2single_dict(db_name,data):
 #     db_path = os.path.join(os.getcwd(),db_name)
 #     SongIndex_sql = SqliteModel(db_path,'SongIndex')

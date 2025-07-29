@@ -1,0 +1,13 @@
+# Code is not working for dictonary search, hindi2iast format
+
+version: '3.1'  # if no version is specified then v1 is assumed. Recommend v2 minimum
+
+services:  # containers. same as docker run
+  sloka_container: # a friendly name. this is also DNS name inside network
+    image: slokabase_img # Optional if you use build:
+    build: . 
+    ports:
+    - "5000:5000"
+    volumes: # Optional, same as -v in docker run
+    - ./database:/app/database 
+    
