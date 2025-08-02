@@ -143,4 +143,5 @@ dependencies:
       - webencodings==0.5.1
       - websocket-client==1.6.3
       - widgetsnbextension==4.0.9
+      - IastFramework==0.0.11
 prefix: /home/karthik/anaconda3/envs/vedabase

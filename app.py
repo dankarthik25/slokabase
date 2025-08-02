@@ -11,6 +11,9 @@ from flask import request,render_template, url_for, flash, redirect
 from slokabase.SqliteModel import get_create_table_query, get_insert_query, get_read_query, get_update_query, get_delete_query
 from slokabase.SqliteModel import SqliteModel
 
+from IastFramework import IAST
+
+
 # db_name = 'slokabase_10.db'
 db_name = 'slokabase.db'
 # db_name = 'slokabase_new.db'
@@ -50,11 +53,12 @@ def add_reference2single_dict(db_name,data):
         # print(temp_line)
         ref_list = []
         if temp_line[1] is not None:
-            print("# # # temp line no:51 is None",temp_line)
+            # print("# # # temp line no:51 is None",temp_line)
             for ref in temp_line[1].split(','):
                 ref_dic = dict()   
                 # print(ref)
                 temp_short_name = ref.split('/')[0]
+                print(f"""`{temp_short_name}`""")
                 my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
                 ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
                 ref_list.append(ref_dic)
@@ -235,54 +239,9 @@ def hindi2eng():
 @app.route("/submit_hindi2eng")
 def submit_hindi2eng():
     hindi_text = request.args.get("Hindi")
-#    print("request htmx get loaded",hindi_text)
-    # hindi_text = request.form["Hindi"]
-    index_dic = dict()
-    with open ('doc/san2english.csv','r') as f:
-        f_contents = f.read()              # read entire file
-    
-    for line in f_contents.split('\n')[:-1]:
-        key, value = line.split(',')
-        index_dic[key.strip()] = value.strip() 
-
-    barakhadi = dict()
-    with open ('doc/san-diacritics.csv','r') as g:
-        g_contents = g.read()              # read entire file
-    # print (f_contents.split('\n')[:-1] )
-    for line in g_contents.split('\n')[:-1]:
-        # print('line',line)
-        key, value = line.split(',')
-        
-        # print(f"'{key.strip()}'='{value.strip()}',") 
-        barakhadi[key.strip()] = value.strip() 
-    # print(barakhadi)
-
-    output_text = ''
-    for line in hindi_text.split('\n'): 
-        for i in line:
-            # print(ord(i), i)
-            if i in index_dic.keys():
-                output_text += index_dic[i]
-                # print(index_dic[i], end='')
-            elif i == '्' and output_text[-1] == 'a':
-                output_text = output_text[:-1]
-                # print('error')
-            elif i in set(barakhadi.keys()) and output_text[-1] == 'a':
-                # print(i)
-                output_text = output_text[:-1] + barakhadi[i]
-            elif i ==':' or ord(i) == 2307: # 2307 ः
-                output_text += 'ḥ' 
-            elif ord(i) == 2306 : # i == ं  or  ं, aṁ
-                output_text += 'ṁ'
-            elif ord(i) == 8205 :# and outpu2307 ःt_text[-1] == 'a':# i == ं ू , ū
-                # https://en.wikipedia.org/wiki/Zero-width_joiner
-                pass
-            else :
-                # print('else ',i, ord(i))
-                output_text += i
-                # print(i,end='')
-        output_text+= '<br>'    
-
+    iast  = IAST()
+    output_text = iast.to_iast(hindi_text)
+    output_text = output_text.replace('\n','<br>')
     return output_text
 
 
@@ -296,18 +255,20 @@ def search():
     match_words = list(filter(r.match, all_dict_word)) # Read Note below
     for match_word in match_words:
         data = get_single_dic('dictionary.db',match_word)
-        # print(data)
+        print(f"Dictionary Search for word {q} is {data}")        
         if len(data)==0:
             pass            
 #            print('error', match_word, data)
 #            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
         else: 
+            print(f"Before adding reference to matching word {q} is {data}")        
             data = add_reference2single_dict('slokabase.db',data)
             # print("route search 300:", data)
             all_dict_data.append(data)
     if len(all_dict_data) ==0:
         # print('all_dict_data is empty for search q:',q,all_dict_data)
         all_dict_data = [[q, [['No Meaning Found', [{'0/0': 'NoRef Found'}]]]]]
+    print(f"Dictionary Search for word {q} is {data}")        
     return render_template('dictSearch.html',all_dict_data=all_dict_data)
 #    print(newlist)
 
