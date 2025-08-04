@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<br>
+
+<h2>hindi2IAST</h2>
+<br>
+
+The <b>International Alphabet of Sanskrit Transliteration</b> (<b>IAST</b>) is a transliteration scheme that allows the lossless <a href="/wiki/Romanisation" class="mw-redirect" title="Romanisation">romanisation</a> of <a href="/wiki/Brahmic_family" class="mw-redirect" title="Brahmic family">Indic scripts</a> as employed by <a href="/wiki/Sanskrit" title="Sanskrit">Sanskrit</a> and related Indic languages. It is based on a scheme that emerged during the 19th century from suggestions by <a href="/wiki/Sir_Charles_Trevelyan,_1st_Baronet" title="Sir Charles Trevelyan, 1st Baronet">Charles Trevelyan</a>, <a href="/wiki/William_Jones_(philologist)" title="William Jones (philologist)">William Jones</a>, <a href="/wiki/Monier_Monier-Williams" title="Monier Monier-Williams">Monier Monier-Williams</a> and other scholars, and formalised by the Transliteration Committee of the Geneva <a href="/wiki/International_Congress_of_Orientalists" title="International Congress of Orientalists">Oriental Congress</a>, in September 1894.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup><sup id="cite_ref-10th_2-0" class="reference"><a href="#cite_note-10th-2">[2]</a></sup> IAST makes it possible for the reader to read the Indic text unambiguously, exactly as if it were in the original Indic script. It is this faithfulness to the original scripts that accounts for its continuing popularity amongst scholars.
+
+
+<br>
+<br>
+
+<table  style="width:100%">
+    <tr>
+      <td style="width:50%">Enter Hindi Below </td>
+      <td style="width:50%">English IAST</td>
+  
+    </tr>
+    <tr>
+        <td >
+            <textarea style="font-size: 20pt" rows="100" cols="40" name="Hindi" hx-get="/submit_hindi2eng"  hx-trigger="keyup changed delay:500ms" hx-target="#post-iast"  > </textarea>   
+            <!-- <input type="text" class="input" 
+            placeholder=" Convert Hind to IAST" 
+            name="Hindi" size="80" style='height:50em'
+            hx-get="/submit_hindi2eng" hx-trigger="keyup changed delay:500ms" 
+            hx-target="#post-iast"> -->
+
+        </td>
+        <td valign="top" style="font-size: 20pt"  id="post-iast">
+            <!-- <textarea rows="49" cols="100" name="IAST">         </textarea>   -->
+                
+ </td>
+     </tr>
+
+    
+  </table>
+  
+  
+
+
+{% endblock content %}
