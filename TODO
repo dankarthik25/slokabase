@@ -1,10 +1,31 @@
-- TODO: replace : hindi2isat function in app.py with https://pypi.org/project/IastFramework/
+- TODO:
+    - Add songs : kalyāṇavṛṣṭistavaḥ, https://greenmesg.org/stotras/lakshmi/kanakadhara_stotram.php ref : TODO_NEXTSloka
+    
+    - Create Javascript for app.py/@app.route("/lib/SongIdx")
+        - div.content> h2.textContent("Sloka Links") 
+            CHANGE: Sloka No in JS/python horizontal range or dropdown formate
 
-    app.py/@app.route("/submit_hindi2eng")/ def submit_hindi2eng():
+    - JScript for showing sloka in native language from iast ( iast2native(text, lang='hindi')    )
+        (convert python IastFormate to FrontEnd Script either WASM or re-write in JavaScript)
 
 
-- TODO: Dict search is showing error or searchs [ "r", "ra", ....etc] 
+    - JScript Convert native indian text to IAST ( native2iast(text) ) 
+        uses above python lib 
 
-- Add songs : kalyāṇavṛṣṭistavaḥ, https://greenmesg.org/stotras/lakshmi/kanakadhara_stotram.php ref : TODO_NEXTSloka
+    - Add Sqlite in frontEnd and convert flask to JS FrontEnd App
+
+    - Crome/FireFox Extention : to read all india language text (convert native site to iast site), Slokabase search possiblity of Andriod App, Windows Exe file host on sourceforce
+
+    - text2audio app, 
 
 
+- ERROR: 
+    - [NEED REVIEW] When internet is not working htmx lib is not working in dictionary search/hindi2iast convertion which uses htmx to send requests 
+
+- DONE: 
+    - replace : hindi2isat function in app.py with https://pypi.org/project/IastFramework/
+
+        app.py/@app.route("/submit_hindi2eng")/ def submit_hindi2eng():
+
+
+    - Dict search is showing error or searchs [ "r", "ra", ....etc] 
