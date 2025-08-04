@@ -28,7 +28,6 @@
 
             <li>  <img src="{{ url_for('static', filename='logo.png') }}" alt="Girl in a jacket" style="width:30px;"> </li>          
             <li><a href="{{url_for('home')}}" class="nav-link">Home</a></li>
-            <li><a href="{{ url_for('static', filename='SankritTutorial.html') }}" class="nav-link">Learn Sanskrit</a></li>            
             <li><a href="{{url_for('dictionary')}}" class="nav-link">Dictionary</a></li>     
             <li><a href="{{url_for('hindi2eng')}}" class="nav-link">hindi2IAST</a></li>                        
             <li><a href="{{url_for('addNewSong')}}" class="nav-link">AddSong</a></li>                                    
@@ -37,12 +36,13 @@
           </div>
           <div class="nav-right"> 
             <ul> 
-            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Books</a></li>
+            <li><a href="{{ url_for('static', filename='SankritTutorial.html') }}" class="nav-link">Learn Sanskrit</a></li>            
+            <!-- <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Books</a></li>
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Classical Music</a></li>
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">SahityaKala</a></li>
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Jyothishya</a></li>
             <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Vastukala </a></li>
-            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Blog </a></li>            
+            <li><a href="{{ url_for('static', filename='underdevelopement.html') }}" class="nav-link">Blog </a></li>             -->
             <li><image src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24" style="margin: 0px 5px;"></image> </li>
             <li> <a href="{{ url_for('static', filename='underdevelopement.html') }}"  class="nav-link">SignIn</a> </li>
             <li><img class="nav-link" src= "{{ url_for('static', filename='man-user-circle-icon.webp') }}" width="25" alt=""></li>            
