@@ -241,6 +241,7 @@ def submit_hindi2eng():
     hindi_text = request.args.get("Hindi")
     iast  = IAST()
     output_text = iast.to_iast(hindi_text)
+    print(hindi_text, output_text)
     output_text = output_text.replace('\n','<br>')
     return output_text
 
