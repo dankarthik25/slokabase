@@ -11,7 +11,7 @@ from flask import request,render_template, url_for, flash, redirect
 from slokabase.SqliteModel import get_create_table_query, get_insert_query, get_read_query, get_update_query, get_delete_query
 from slokabase.SqliteModel import SqliteModel
 
-from IastFramework import IAST
+from slokabase.IAST import IAST
 
 
 # db_name = 'slokabase_10.db'
@@ -99,7 +99,7 @@ def home():
     SongIndex_sql = SqliteModel(db_path,'SongIndex')
     # mySongs_sql = SqliteModel(db_path,'Songs' )
 
-    song_list = SongIndex_sql.read_entry(*['song_idx', 'song_name','song_short_name'])
+    song_list = SongIndex_sql.read_entry(*['song_idx', 'song_name','song_short_name','total_slokas','devotion_god','author' ])
     return render_template('lib.html', song_list=song_list)
 
     # return render_template('sloka.html', posts=posts,)
@@ -402,6 +402,18 @@ def sloka(song_id,sloka_id):
     my_sloka[0]['song_name'] = song_metadata[0]['song_name']
 
 #    print(my_sloka)
+    sloka_list =  mySongs_sql.read_entry("slokas_no", song_idx=song_id)
+    NoOf_Slokas = len(sloka_list)
+    # print(sloka_list,len(sloka_list))
+    preSloka_href = 1
+    nextSloka_href = NoOf_Slokas
+    if int(sloka_id) > 1 :
+        preSloka_href = sloka_id -1
+    if int(sloka_id) < NoOf_Slokas:
+        nextSloka_href = sloka_id +1
+    # print(f"preSloka_href={preSloka_href},sloka_id={sloka_id} nextSloka_href={nextSloka_href}")
+    my_sloka[0]['preSloka_href'] = preSloka_href
+    my_sloka[0]['nextSloka_href'] = nextSloka_href
      
     return render_template('my_sloka.html', my_sloka_meta=my_sloka, linewise_synonym = synonym_list, song_id=song_id)
 

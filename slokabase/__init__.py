@@ -5,7 +5,7 @@ import os
 
 from .SqliteModel import get_create_table_query, get_insert_query, get_read_query, get_update_query, get_delete_query
 from .SqliteModel import SqliteModel
-
+from .IAST import IAST
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'

@@ -3,12 +3,21 @@
 <div class="content">
     <!-- {{sloka_id}} -->
     <div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-top: 15px;">
-        <a class="song-path" href="{{ url_for('home') }}"> Home</a> / Songs /
+        <a href="#" id="toggleNav">[ ▼ ] </a>
+        <a class="song-path" href="{{ url_for('home') }}"> Home</a> /
+         <!-- Songs / -->
         <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}"> {{my_sloka_meta[0]['song_name']}}</a> /
-        Versa 
+        <!-- Versa  -->
         <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}/{{my_sloka_meta[0]['slokas_no']}}">
             {{my_sloka_meta[0]['slokas_no']}}</a>
+        <!-- <a href="https://www.youtube.com/" id="nextSloka" >[ ▶ ]</a>
+        <a href="https://www.google.com/"  id="prevSloka" >[ ◀ ]&nbsp; </a> -->
+        <a href="{{ url_for('lib') }}/{{song_id}}/{{my_sloka_meta[0]['nextSloka_href']}}" id="nextSloka" >[ ▶ ]</a>&nbsp;
+        <a href="{{ url_for('lib') }}/{{song_id}}/{{my_sloka_meta[0]['preSloka_href']}}" id="prevSloka" >[ ◀ ]&nbsp;&nbsp;</a>
+
+
     </div>
+
 
 
     <div style="padding-top: 30px;">

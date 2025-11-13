@@ -18,15 +18,55 @@
 
 <div style="margin: 20px;">
    <h1 style="margin-bottom: 5px;font-size: 1.5rem;">   Library </h1>
+
+         <div class="song-menu-header">
+            <div class="song-menu-header-row" style="background-color:#fdfdfd">
+               <div class="song-menu-header-anchor" > Song Name 🡩🡣</div>
+               <!-- <a class="song-menu-header-anchor"   href="http://172.17.0.2:5000/lib/1"> Śri Daśavātāra Stotraṁ 2 </a> -->
+               <!-- <div class="song-menu-header-anchor-right" style="text-align: right;" > No.of Slokas</div> -->
+               <div class="song-menu-header-anchor-right" style="text-align: right;"> Devotion </div>
+               <div class="song-menu-header-anchor-right" style="text-align: right;"> Author </div>
+            </div>
+         </div>
+
 {% for song_meta in song_list%}
 <!-- {{song_meta['song_idx']}} <a href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> ({{song_meta['song_short_name']}}) <br>   -->
  <!-- {{song_meta}} <br> -->
 
- <div class="song-header" >
-    <a class="song-header-anchor" href = "{{ url_for('lib') }}/{{song_meta['song_idx']}}"  > {{song_meta['song_name']}}  </a> <br>
- </div>
+<div class="song-menu-header">
+   <div class="song-menu-header-row">
+      <div class="song-menu-header-anchor">
+         <a style="text-decoration: none;   color: #6b1b04;" href="{{ url_for('lib') }}/{{song_meta['song_idx']}}">
+            {{song_meta['song_name']}}</a>
+      </div>
+      <!-- <div class="song-menu-header-anchor-right">
+         {% if not song_meta['total_slokas'] %}
+         <span  style="text-align: right;"> </span>
+         {% else %}
+         <span style="text-align: right;"> {{song_meta['total_slokas']}}</span>
+         {% endif %}
+      </div> -->
+
+      <div class="song-menu-header-anchor-right">
+         {% if not song_meta['devotion_god'] %}
+         <span style="text-align: right;"> </span>
+         {% else %}
+         <span style="text-align: right;"> {{song_meta['devotion_god'] }}</span>
+         {% endif %}
+
+      </div>
+      <div class="song-menu-header-anchor-right">
+         {% if not song_meta['author'] %}
+         <span></span>
+         {% else %}
+         <span style="text-align: right;"> {{song_meta['author']}} </span>
+         {% endif %}
+
+      </div>
+   </div>
+</div>   
  {% endfor %}
-</div>
+
 
 </div>
 
