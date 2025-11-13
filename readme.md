@@ -37,11 +37,14 @@ docker run -it --name sloka_con -v /media/karthik/myVolume/update_vbase/slokabas
 # For storing new song in pc/ or Presistanc volume on file 
 
 
+
+# Wrap docker in linux cli : copy   slokabase_linux_app(chmod +x slokabase) to /usr/local/bin or ($HOME/.local/bin) and run slokabase in cli
+
 ```
 # Project Progress
 ## `DONE` Add new songs to Flask App
 
-1. `DONE` Get website containting all the song and Translation :  
+1. `DONE` Get website containting all the song and Translation :
 eg : http://kksongs.org/songs/p/pralayapayodhijale.html 
 2. `DONE` Automate web scrapping  for getting the song and Translation to loading in **Database**
 
