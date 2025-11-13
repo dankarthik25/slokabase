@@ -8,4 +8,4 @@ MarkupSafe==2.1.3
 Werkzeug==3.0.1
 zipp==3.17.0
 gunicorn==20.0.4
-IastFramework==0.0.11
+# IastFramework==0.0.11
