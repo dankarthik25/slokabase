@@ -29,7 +29,7 @@ def get_single_dic(db_name,dic_word):
 
     db_connect = sqlite3.connect(db_path)
     db_cursor = db_connect.cursor()
-    query = f"""select word, meaning_value,reference from DictMeaning  where word='{dic_word.strip()}' ORDER BY word, meaning_value ASC;"""
+    query = f"""SELECT word, meaning_value,reference FROM DictMeaning  WHERE word='{dic_word.strip()}' ORDER BY word, meaning_value ASC;"""
     db_cursor.execute(query)
     data = db_cursor.fetchall()
     db_cursor.close()
@@ -58,7 +58,7 @@ def add_reference2single_dict(db_name,data):
                 ref_dic = dict()   
                 # print(ref)
                 temp_short_name = ref.split('/')[0]
-                print(f"""`{temp_short_name}`""")
+#                print(f"""`{temp_short_name}`""")
                 my_song_idx  = SongIndex_sql.read_entry(song_short_name=temp_short_name)[0]['song_idx']
                 ref_dic[f"{my_song_idx}/{ref.split('/')[1]}"] = ref
                 ref_list.append(ref_dic)
@@ -251,25 +251,26 @@ def search():
     q = request.args.get("dictSearch")
     all_dict_word =get_all_dict_words('dictionary.db')
     all_dict_data = []    
-#    print(q)
+
     r = re.compile(q)
     match_words = list(filter(r.match, all_dict_word)) # Read Note below
+    print(f"Search for query word: {q}; No.of Match found:{len(match_words)}")
     for match_word in match_words:
         data = get_single_dic('dictionary.db',match_word)
-        print(f"Dictionary Search for word {q} is {data}")        
+#        print(f"Dictionary Search for word {q} is {data}")        
         if len(data)==0:
-            pass            
+#            pass            
 #            print('error', match_word, data)
-#            print(f'dic word :{match_word} has no meaning defined in dictMeaning Table')
+            print(f'query q :{q} has no meaning defined in dictMeaning Table')
         else: 
-            print(f"Before adding reference to matching word {q} is {data}")        
+#            print(f"Before adding reference to matching word {q} is {data}")        
             data = add_reference2single_dict('slokabase.db',data)
             # print("route search 300:", data)
             all_dict_data.append(data)
     if len(all_dict_data) ==0:
         # print('all_dict_data is empty for search q:',q,all_dict_data)
         all_dict_data = [[q, [['No Meaning Found', [{'0/0': 'NoRef Found'}]]]]]
-    print(f"Dictionary Search for word {q} is {data}")        
+#    print(f"Dictionary Search for word {q} is {data}")        
     return render_template('dictSearch.html',all_dict_data=all_dict_data)
 #    print(newlist)
 
@@ -405,8 +406,10 @@ def sloka(song_id,sloka_id):
     sloka_list =  mySongs_sql.read_entry("slokas_no", song_idx=song_id)
     NoOf_Slokas = len(sloka_list)
     # print(sloka_list,len(sloka_list))
+    # preSloka_href = None #1
+    # nextSloka_href = None #NoOf_Slokas
     preSloka_href = 1
-    nextSloka_href = NoOf_Slokas
+    nextSloka_href = NoOf_Slokas    
     if int(sloka_id) > 1 :
         preSloka_href = sloka_id -1
     if int(sloka_id) < NoOf_Slokas:
