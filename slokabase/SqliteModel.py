@@ -283,4 +283,4 @@ class SqliteModel():
 
     def __del__( self):
         #  print('Closed Connection to db')
-         self.db_connect.close()           
+         self.db_connect.close()

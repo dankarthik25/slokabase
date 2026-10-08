@@ -334,6 +334,10 @@ def song(song_id):
     my_song = mySongs_sql.read_entry(song_idx=song_id)
 
     for my_sloka in my_song:
+        # if my_sloka['sloka_hindi'] !=None: 
+        #     my_sloka['sloka_hindi']   = my_sloka['sloka_hindi'].split('\n')
+
+
         if my_sloka['sloka_eng'] !=None: 
             my_sloka['sloka_eng']   = my_sloka['sloka_eng'].split('\n')
 
@@ -350,6 +354,9 @@ def song(song_id):
 def sloka(song_id,sloka_id):
     mySongs_sql = SqliteModel(db_path,'Songs')
     my_sloka = mySongs_sql.read_entry(song_idx=song_id, slokas_no=sloka_id)
+
+    if my_sloka[0]['sloka_hindi'] !=None: 
+        my_sloka[0]['sloka_hindi']   = my_sloka[0]['sloka_hindi'].split('\n')
 
     if my_sloka[0]['sloka_eng'] !=None: 
         my_sloka[0]['sloka_eng']   = my_sloka[0]['sloka_eng'].split('\n')
@@ -419,6 +426,85 @@ def sloka(song_id,sloka_id):
     my_sloka[0]['nextSloka_href'] = nextSloka_href
      
     return render_template('my_sloka.html', my_sloka_meta=my_sloka, linewise_synonym = synonym_list, song_id=song_id)
+
+
+@app.route('/lib/<int:song_id>/<int:sloka_id>/<int:line_no>')
+def sloka_line(song_id,sloka_id,line_no):
+    mySongs_sql = SqliteModel(db_path,'Songs')
+    my_sloka = mySongs_sql.read_entry(song_idx=song_id, slokas_no=sloka_id)
+    if len(my_sloka) ==0:
+        return 'Not Found', 404
+
+    if my_sloka[0]['sloka_eng'] is None:
+        return 'Not Found', 404
+
+    eng_lines = my_sloka[0]['sloka_eng'].split('\n')
+    NoOf_Lines = len(eng_lines)
+    if int(line_no) < 1 or int(line_no) > NoOf_Lines:
+        return 'Not Found', 404
+
+    SongIndex_sql = SqliteModel(db_path,'SongIndex')
+    song_metadata = SongIndex_sql.read_entry( *['song_name','song_short_name'] ,song_idx=song_id)
+    if len(song_metadata) ==0:
+        return 'Not Found', 404
+
+    synonym_list = get_linewise_synonym(my_sloka[0])
+    syn_aligned = False
+    line_synonym = None
+    if synonym_list is not None and len(synonym_list) == NoOf_Lines:
+        syn_aligned = True
+        line_synonym = synonym_list[line_no-1]
+
+    translation_lines = None
+    tr_aligned = False
+    if my_sloka[0]['translation'] is not None:
+        translation_lines = my_sloka[0]['translation'].split('\n')
+        if len(translation_lines) == NoOf_Lines:
+            tr_aligned = True
+
+    sloka_nos = sorted(r['slokas_no'] for r in mySongs_sql.read_entry('slokas_no', song_idx=song_id))
+    next_sloka_id = sloka_id
+    next_line_no = line_no
+    if int(line_no) < NoOf_Lines:
+        next_line_no = line_no + 1
+    else:
+        for n in sloka_nos:
+            if n > sloka_id:
+                next_sloka_id = n
+                next_line_no = 1
+                break
+
+    pre_sloka_id = sloka_id
+    pre_line_no = line_no
+    if int(line_no) > 1:
+        pre_line_no = line_no - 1
+    else:
+        for n in reversed(sloka_nos):
+            if n < sloka_id:
+                prev_sloka = mySongs_sql.read_entry('sloka_eng', song_idx=song_id, slokas_no=n)
+                if len(prev_sloka) and prev_sloka[0]['sloka_eng'] is not None:
+                    pre_sloka_id = n
+                    pre_line_no = len(prev_sloka[0]['sloka_eng'].split('\n'))
+                break
+
+    sloka_meta = {
+        'song_name'    : song_metadata[0]['song_name'],
+        'slokas_no'    : sloka_id,
+        'line_no'      : line_no,
+        'NoOf_Lines'   : NoOf_Lines,
+        'eng_line'     : eng_lines[line_no-1],
+        'syn_aligned'  : syn_aligned,
+        'line_synonym' : line_synonym,
+        'all_synonyms' : synonym_list,
+        'translation'  : translation_lines,
+        'tr_aligned'   : tr_aligned,
+        'pre_sloka_id' : pre_sloka_id,
+        'preLine_href' : pre_line_no,
+        'next_sloka_id': next_sloka_id,
+        'nextLine_href': next_line_no,
+    }
+
+    return render_template('sloka_line.html', sloka_meta=sloka_meta, song_id=song_id)
 
 
 @app.route("/ppt/<int:song_id>")

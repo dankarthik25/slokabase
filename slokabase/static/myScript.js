@@ -1,6 +1,16 @@
 const nav  = document.querySelector('nav')
 const toggleLink = document.getElementById('toggleNav');
+const prevLink = document.getElementById('prevSloka');
+const nextLink = document.getElementById('nextSloka');
 
+/* Reading pages (sloka / line view): nav starts collapsed,
+   shown only on demand (toggle link or Up/Down arrow). */
+if (toggleLink) {
+  nav.style.display = 'none';
+  toggleLink.textContent = '[ ▼ ]';
+}
+
+if (toggleLink) {
   toggleLink.addEventListener('click', function (event) {
     event.preventDefault(); // prevent page jump
 
@@ -12,39 +22,40 @@ const toggleLink = document.getElementById('toggleNav');
       toggleLink.textContent = '[ ▲ ]';
     }
   });
+}
 
 
-/* 
+/*
     Previous Sloka and Next Sloka
 */
 
-const prevLink = document.getElementById('prevSloka');
-const nextLink = document.getElementById('nextSloka');
-
 // When user clicks the anchor
-prevLink.addEventListener('click', function(event) {
-  event.preventDefault();
+if (prevLink) {
+  prevLink.addEventListener('click', function(event) {
+    event.preventDefault();
 
-  window.location.href = this.getAttribute('href');
-});
+    window.location.href = this.getAttribute('href');
 
-nextLink.addEventListener('click', function(event) {
-  event.preventDefault();
-  window.location.href = this.getAttribute('href');
+  });
+}
 
-
-  // window.history.forward();
-});
+if (nextLink) {
+  nextLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = this.getAttribute('href');
+  });
+}
 
 // When user presses left/right arrow keys
 document.addEventListener('keydown', function(event) {
   if (event.key === 'ArrowLeft') {
-    prevLink.click();
-    // window.history.back();
+    if (prevLink) prevLink.click();
   } else if (event.key === 'ArrowRight') {
-    nextLink.click();
-    // window.history.forward();
+    if (nextLink) nextLink.click();
+  } else if (event.key === 'ArrowUp')  {
+    if (toggleLink) toggleLink.click();
+  }
+  else if (event.key === 'ArrowDown')  {
+    if (toggleLink) toggleLink.click();
   }
 });
-
-

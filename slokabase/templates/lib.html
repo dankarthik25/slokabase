@@ -24,8 +24,12 @@
                <div class="song-menu-header-anchor" > Song Name 🡩🡣</div>
                <!-- <a class="song-menu-header-anchor"   href="http://172.17.0.2:5000/lib/1"> Śri Daśavātāra Stotraṁ 2 </a> -->
                <!-- <div class="song-menu-header-anchor-right" style="text-align: right;" > No.of Slokas</div> -->
-               <div class="song-menu-header-anchor-right" style="text-align: right;"> Devotion </div>
-               <div class="song-menu-header-anchor-right" style="text-align: right;"> Author </div>
+               <div class="song-menu-header-anchor-right" style="text-align: right;">
+                           <span style="text-align: right;font-size: 0.65em;"> Devotion 🡩🡣 </span>
+                           <span style="text-align: right;font-size: 1em;">&nbsp;&nbsp; | &nbsp;&nbsp;</span>
+                           <span style="text-align: right;font-size: 0.65em;"> Author 🡩🡣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+               </div>
+               <!-- <div class="song-menu-header-anchor-right" style="text-align: right;"> Author </div> -->
             </div>
          </div>
 
@@ -49,17 +53,17 @@
 
       <div class="song-menu-header-anchor-right">
          {% if not song_meta['devotion_god'] %}
-         <span style="text-align: right;"> </span>
+         <span style="text-align: right; "> </span>
          {% else %}
-         <span style="text-align: right;"> {{song_meta['devotion_god'] }}</span>
+         <span style="text-align: right;font-size: 0.65em;"> {{song_meta['devotion_god'] }}</span>
          {% endif %}
+         <span style="text-align: right; ">| </span>
 
-      </div>
-      <div class="song-menu-header-anchor-right">
+
          {% if not song_meta['author'] %}
          <span></span>
          {% else %}
-         <span style="text-align: right;"> {{song_meta['author']}} </span>
+         <span style="text-align: right; font-size: 0.65em;"> {{song_meta['author']}} </span>
          {% endif %}
 
       </div>

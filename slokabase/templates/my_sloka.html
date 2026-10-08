@@ -2,7 +2,7 @@
 {% block content %}
 <div class="content">
     <!-- {{sloka_id}} -->
-    <div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-top: 15px;">
+    <div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-top: 15px; margin-bottom:15px">
         <a href="#" id="toggleNav">[ ▼ ] </a>
         <a class="song-path" href="{{ url_for('home') }}"> Home</a> /
          <!-- Songs / -->
@@ -14,14 +14,24 @@
         <a href="https://www.google.com/"  id="prevSloka" >[ ◀ ]&nbsp; </a> -->
         <a href="{{ url_for('lib') }}/{{song_id}}/{{my_sloka_meta[0]['nextSloka_href']}}" id="nextSloka" >[ ▶ ]</a>&nbsp;
         <a href="{{ url_for('lib') }}/{{song_id}}/{{my_sloka_meta[0]['preSloka_href']}}" id="prevSloka" >[ ◀ ]&nbsp;&nbsp;</a>
-
-
     </div>
 
 
+    <h1 class="sloka-title"> {{my_sloka_meta[0]['song_name']}} | {{my_sloka_meta[0]['slokas_no']}} |</h1>
 
-    <div style="padding-top: 30px;">
-        <h1 class="sloka-title"> {{my_sloka_meta[0]['song_name']}} | {{my_sloka_meta[0]['slokas_no']}} |</h1>
+    {% if my_sloka_meta[0]['sloka_hindi'] is not none %}
+    <div style="text-align: center;">
+        <h1 class="sloka-header">Sanskrit</h2>
+            <p class="translation-text">
+                {% for trans_line in my_sloka_meta[0]['sloka_hindi'] %}
+                    {{trans_line}} <br>
+                {% endfor %}
+            </p>
+    </div>
+{% endif %}
+
+
+    <div>
         <p class="sloka-verser-eng">
             <i>
                 {% for eng_line in my_sloka_meta[0]['sloka_eng'] %}
@@ -45,7 +55,7 @@
 <!-- Test Synonyms sync with verse     -->
 
 {% if linewise_synonym is not none %}
-    <div style="text-align: center;">
+    <div style="text-align: center; padding-left: 20px;padding-right: 20px;">
         <h1 class="sloka-header">Synonyms</h1>
         <p class="synonym-text">
                 {% for line in linewise_synonym %}

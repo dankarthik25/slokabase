@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+    <div style=" color: #1564a8; background-color: #f5f5f5;padding: 7px; margin-top: 15px; margin-bottom:15px">
+        <a href="#" id="toggleNav">[ ▼ ] </a>
+        <a class="song-path" href="{{ url_for('home') }}"> Home</a> /
+        <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}"> {{sloka_meta['song_name']}}</a> /
+        <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}/{{sloka_meta['slokas_no']}}">
+            {{sloka_meta['slokas_no']}}</a> /
+        <a class="song-path" href="{{ url_for('lib') }}/{{song_id}}/{{sloka_meta['slokas_no']}}/{{sloka_meta['line_no']}}">
+            Line {{sloka_meta['line_no']}}</a>
+        <a href="{{ url_for('sloka_line', song_id=song_id, sloka_id=sloka_meta['next_sloka_id'], line_no=sloka_meta['nextLine_href']) }}" id="nextSloka">[ ▶ ]</a>&nbsp;
+        <a href="{{ url_for('sloka_line', song_id=song_id, sloka_id=sloka_meta['pre_sloka_id'], line_no=sloka_meta['preLine_href']) }}" id="prevSloka">[ ◀ ]&nbsp;&nbsp;</a>
+    </div>
+
+    <div style="text-align: center;">
+        <h1 class="sloka-header">IAST</h1>
+        <p class="sloka-verser-eng">
+            <i>{{sloka_meta['eng_line']}}</i>
+        </p>
+    </div>
+
+    <div style="text-align: center; padding-left: 20px;padding-right: 20px;">
+        <h1 class="sloka-header">Word to Word</h1>
+        {% if sloka_meta['syn_aligned'] %}
+            <p class="synonym-text">
+                <div style="border: 1px solid  #fdf1dc;padding: 2px;">
+                    {% for synonym_dic in sloka_meta['line_synonym'] %}
+                        {% for key, value in synonym_dic.items() %}
+                            <a class="sloka-synonyms-key" href=''> {{key}}</a>:{{value}} ;
+                        {% endfor %}
+                    {% endfor %}<br>
+                </div>
+            </p>
+        {% elif sloka_meta['all_synonyms'] is not none %}
+            <p class="synonym-text">
+                <span style="font-size: 0.75em;">(whole sloka)</span>
+                {% for line in sloka_meta['all_synonyms'] %}
+                    <div style="border: 1px solid  #fdf1dc;padding: 2px;">
+                        {% for synonym_dic in line %}
+                            {% for key, value in synonym_dic.items() %}
+                                <a class="sloka-synonyms-key" href=''> {{key}}</a>:{{value}} ;
+                            {% endfor %}
+                        {% endfor %}<br>
+                    </div>
+                {% endfor %}
+            </p>
+        {% else %}
+            <p class="synonym-text">Not available for this sloka.</p>
+        {% endif %}
+    </div>
+
+    {% if sloka_meta['translation'] is not none %}
+    <div style="text-align: center; padding-bottom: 20px; margin-bottom:20px ;">
+        <h1 class="sloka-header">Translation</h1>
+        <p class="translation-text">
+            {% if sloka_meta['tr_aligned'] %}
+                {{sloka_meta['translation'][sloka_meta['line_no']-1]}}
+            {% else %}
+                <span style="font-size: 0.75em;">(whole sloka)</span><br>
+                {% for trans_line in sloka_meta['translation'] %}
+                    {{trans_line}} <br>
+                {% endfor %}
+            {% endif %}
+        </p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock content %}
