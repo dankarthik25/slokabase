@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+  <h2>GreenMesg stotra importer</h2>
+  <p>
+    Import stotras from greenmesg.org into the SlokaBase database
+    (Devanagari + IAST + word meanings + translation).
+  </p>
+  <ul>
+    <li>Songs in DB: <b>{{ stats.songs }}</b></li>
+    <li>Songs from greenmesg.org: <b>{{ stats.greenmesg_songs }}</b></li>
+    <li>Verse rows: <b>{{ stats.verses }}</b></li>
+  </ul>
+
+  <h3>Run importer</h3>
+  <form method="post" action="{{ url_for('greenmesg.run') }}">
+    <label>Single URL (optional):
+      <input type="text" name="url" size="70" placeholder="https://greenmesg.org/stotras/...">
+    </label><br><br>
+    <label>Limit (0 = all, capped at 50 on the web):
+      <input type="number" name="limit" value="5" min="0" max="50">
+    </label><br><br>
+    <label><input type="checkbox" name="dry_run" checked> Dry-run (parse only, no DB writes)</label><br>
+    <label><input type="checkbox" name="force"> Force (re-scrape songs already in DB)</label><br><br>
+    <button type="submit">Run</button>
+  </form>
+  <p><small>Full import of 200+ pages: run
+    <code>python3 -m slokabase.plugins.greenmesg</code> on the server.
+    Plan as JSON: <a href="{{ url_for('greenmesg.api_plan') }}">/api/plan</a>.</small></p>
+
+  {% if output %}
+  <h3>Run output <span>({% if output.ok %}OK{% else %}ERROR{% endif %}:
+    <code>{{ output.argv | join(' ') }}</code>)</span></h3>
+  <pre style="white-space: pre-wrap; max-height: 40em; overflow: auto;">{{ output.text }}</pre>
+  {% endif %}
+
+  <h3>Recent log</h3>
+  <pre style="white-space: pre-wrap; max-height: 20em; overflow: auto;">{{ log_tail }}</pre>
+</div>
+{% endblock %}

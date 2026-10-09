@@ -1,8 +1,25 @@
-import os, sqlite3 
+import os, sqlite3
 import re
 from slokabase import app
 
 from flask import request,render_template, url_for, flash, redirect
+
+# Optional plugins (Flask blueprints). Each import is guarded so a broken or
+# disabled plugin can never take the main app down.
+#   SLOKABASE_GREENMESG=0  -> disable the GreenMesg stotra importer UI.
+#   SLOKABASE_KKSONGS=0    -> disable the kksongs song importer UI.
+if os.environ.get("SLOKABASE_GREENMESG", "1") == "1":
+    try:
+        from slokabase.plugins.greenmesg import blueprint as _greenmesg_bp
+        app.register_blueprint(_greenmesg_bp)
+    except Exception as _plugin_exc:  # noqa: BLE001
+        print(f"[plugins] greenmesg disabled: {_plugin_exc}")
+if os.environ.get("SLOKABASE_KKSONGS", "1") == "1":
+    try:
+        from slokabase.plugins.kksongs import blueprint as _kksongs_bp
+        app.register_blueprint(_kksongs_bp)
+    except Exception as _plugin_exc:  # noqa: BLE001
+        print(f"[plugins] kksongs disabled: {_plugin_exc}")
 # from slokabase.forms import RegistrationForm, LoginForm, SongIndex, Song_Details
 
 
